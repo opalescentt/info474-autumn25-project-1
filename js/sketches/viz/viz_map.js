@@ -110,7 +110,7 @@ const worldMapSketch = (p) => {
       
         slider.style("position", "relative");
         slider.style("margin-top", "10px");
-        slider.style("width", "90%");
+        slider.style("width", p.width + "px");  
       
         slider.input(() => {
           let index = slider.value();
