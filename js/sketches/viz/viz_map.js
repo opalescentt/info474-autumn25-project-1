@@ -69,7 +69,31 @@ const worldMapSketch = (p) => {
     
       // Draw map
       worldMap.features.forEach((feature) => drawCountry(feature));
+
+      drawSliderLabels();   
     };
+
+    function drawSliderLabels() {
+        if (years.length === 0) return;
+      
+        p.textSize(12);
+        p.fill(200);
+        p.textAlign(p.CENTER, p.TOP);
+      
+        // choose a horizontal range that roughly matches the slider
+        let startX = 20;
+        let endX = p.width - 20;
+        let labelY = p.height - 10;  // near bottom of canvas
+      
+        // label the first and last year and maybe a few in between
+        for (let i = 0; i < years.length; i++) {
+          // only show some labels so it does not get too crowded
+          if (i === 0 || i === years.length - 1 || i % 5 === 0) {
+            let x = p.map(i, 0, years.length - 1, startX, endX);
+            p.text(years[i], x, labelY);
+          }
+        }
+      }
 
     // Recalculate country counts based on selected year
     function updateYearCounts(year) {
