@@ -62,6 +62,8 @@ const worldMapSketch = (p) => {
     p.draw = () => {
       p.background(25);
 
+      p.textAlign(p.LEFT, p.BASELINE);
+
       // Title
       p.fill(255);
       p.textSize(18);
@@ -88,7 +90,7 @@ const worldMapSketch = (p) => {
         // label the first and last year and maybe a few in between
         for (let i = 0; i < years.length; i++) {
           // only show some labels so it does not get too crowded
-          if (i === 0 || i === years.length - 1 || i % 5 === 0) {
+          if (i === 0 || i === years.length - 1 || i % 6 === 0) {
             let x = p.map(i, 0, years.length - 1, startX, endX);
             p.text(years[i], x, labelY);
           }
@@ -117,13 +119,18 @@ const worldMapSketch = (p) => {
 
     function extractYears() {
         let yearSet = new Set();
-    
+      
         for (let r = 0; r < dataTable.getRowCount(); r++) {
-          let yr = dataTable.getString(r, "Year");
-          if (yr && yr !== "NaN") yearSet.add(yr);
+          let yr = parseInt(dataTable.getString(r, "Year"));
+      
+          if (!isNaN(yr) && yr <= 2016) {
+            yearSet.add(yr);
+          }
         }
-    
+      
         years = Array.from(yearSet).sort((a, b) => a - b);
+      
+        years.sort((a, b) => a - b);
     }
 
     // Create slider
