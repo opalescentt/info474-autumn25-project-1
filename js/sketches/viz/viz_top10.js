@@ -4,7 +4,15 @@
     margin: { top: 40, right: 40, bottom: 40, left: 80 },
     offsetX: 80,
     offsetY: 40,
+    currentStroke: 0,
   };
+
+  var strokeTypes = [
+    { name: "Freestyle", dataKey: "freestyleData" },
+    { name: "Backstroke", dataKey: "backstrokeData" },
+    { name: "Breaststroke", dataKey: "breaststrokeData" },
+    { name: "Butterfly", dataKey: "butterflyData" },
+  ];
 
   let freestyleData, backstrokeData, breaststrokeData, butterflyData;
   let nameArr, yearArr, countryArr, ageArr, heightArr, weightArr, timeArr;
@@ -22,46 +30,16 @@
     };
 
     p.setup = function () {
-      var canvas = p.createCanvas(1200, 550);
+      var canvas = p.createCanvas(1000, 550);
       canvas.parent("viz_top10");
       p.textFont("Inria Serif");
     };
 
     p.draw = function () {
-      // rows:
-      // Name, Year, Country, Age, Weight, Height, Speed
-      // canvas is 900 wide and 400 long
-      // each cell is 128px wide and px long
       p.clear();
       p.background(0);
-
-      dataSelect();
       drawTable(p);
     };
-
-    function dataSelect() {
-      let sportsArr = ["Freestyle", "Breaststroke", "Backstroke", "Butterfly"];
-
-      let x_cell = 0;
-      let y_cell = 0;
-
-      for (i = 0; i < 4; i++) {
-        p.push();
-        p.fill("#3D3D3D");
-        p.stroke("#EFEFEF");
-        p.rect(x_cell, y_cell, 200, 50);
-        p.pop();
-
-        p.push();
-        p.stroke("#D9D9D9");
-        p.fill("white");
-        p.textSize(20);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text(sportsArr[i], x_cell + 100, y_cell + 30);
-        y_cell += 50;
-        p.pop();
-      }
-    }
 
     function drawTable(p) {
       p.push();
@@ -78,13 +56,32 @@
         "Time",
       ];
 
-      nameArr = freestyleData.getColumn("Athlete");
-      yearArr = freestyleData.getColumn("Year");
-      countryArr = freestyleData.getColumn("Team");
-      ageArr = freestyleData.getColumn("Age");
-      heightArr = freestyleData.getColumn("Height");
-      weightArr = freestyleData.getColumn("Weight");
-      timeArr = freestyleData.getColumn("Results");
+      // select stroke
+      let selectedData;
+      switch (manager.currentStroke) {
+        case 0:
+          selectedData = freestyleData;
+          break;
+        case 1:
+          selectedData = backstrokeData;
+          break;
+        case 2:
+          selectedData = breaststrokeData;
+          break;
+        case 3:
+          selectedData = butterflyData;
+          break;
+        default:
+          selectedData = freestyleData;
+      }
+
+      nameArr = selectedData.getColumn("Athlete");
+      yearArr = selectedData.getColumn("Year");
+      countryArr = selectedData.getColumn("Team");
+      ageArr = selectedData.getColumn("Age");
+      heightArr = selectedData.getColumn("Height");
+      weightArr = selectedData.getColumn("Weight");
+      timeArr = selectedData.getColumn("Results");
 
       let arrNames = [
         nameArr,
@@ -96,12 +93,12 @@
         timeArr,
       ];
 
-      let x_cell = 200;
+      let x_cell = 0;
       let x_width = 128;
       let name_adjustment = 0;
 
       // first loop for columns
-      for (i = 0; i < 7; i++) {
+      for (let i = 0; i < 7; i++) {
         let y_cell = 0;
         let selectedArr = arrNames[i];
 
@@ -110,7 +107,7 @@
           name_adjustment = 50;
         }
         // second loop - fills in cells vertically
-        for (j = -1; j < 11; j++) {
+        for (let j = -1; j < 11; j++) {
           if (j == -1) {
             p.push();
             p.fill("#252525");
@@ -149,4 +146,10 @@
       p.pop();
     }
   });
+
+  document
+    .getElementById("strokeSelect")
+    .addEventListener("change", function (e) {
+      manager.currentStroke = parseInt(e.target.value);
+    });
 })();
