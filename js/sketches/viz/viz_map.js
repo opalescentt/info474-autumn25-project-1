@@ -54,7 +54,7 @@ const worldMapSketch = (p) => {
       createYearSlider();
   
       currentYear = years[0];
-    //   updateYearCounts(currentYear);
+      updateYearCounts(currentYear);
   
       p.noLoop();
     };
@@ -65,6 +65,26 @@ const worldMapSketch = (p) => {
       // Draw map
       worldMap.features.forEach((feature) => drawCountry(feature));
     };
+
+    // Recalculate country counts based on selected year
+    function updateYearCounts(year) {
+        countryCounts = {}; // reset
+      
+        for (let r = 0; r < dataTable.getRowCount(); r++) {
+          let rowYear = dataTable.getString(r, "Year");
+          if (rowYear != year) continue;
+      
+          let noc = dataTable.getString(r, "Team_x");
+          if (!noc || noc === "NaN") continue;
+      
+          // convert NOC → ISO3
+          let iso = nocToIso[noc] || noc;  // fall back to same code if already ISO
+          if (!iso) continue;
+      
+          if (!countryCounts[iso]) countryCounts[iso] = 0;
+          countryCounts[iso]++;
+        }
+    }
 
     function extractYears() {
         let yearSet = new Set();
