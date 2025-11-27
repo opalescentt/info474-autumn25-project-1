@@ -20,13 +20,11 @@
       self.steps.forEach(function (el) {
         var rect = el.getBoundingClientRect();
         var top = rect.top + window.pageYOffset;
-        // Always use element top as the activation point
         self.sectionPositions.push(top);
       });
     };
 
     this.position = function () {
-      // Always trigger at viewport center
       var triggerY = window.pageYOffset + window.innerHeight * 0.2;
 
 
