@@ -42,6 +42,11 @@ const worldMapSketch = (p) => {
         "ANZ": "AUS"    // Australasia → Australia (approx)
       };
   
+    p.preload = () => {
+      worldMap = p.loadJSON("data/custom.geo.json");
+      dataTable = p.loadTable("data/country_map.csv", "csv", "header");
+    };
+  
   };
   
   new p5(worldMapSketch, "viz_worldmap");
