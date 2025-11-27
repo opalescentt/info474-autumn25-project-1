@@ -49,7 +49,7 @@
             p.text("Year", p.width / 2, p.height - 20);
 
             p.push();
-            p.translate(20, p.height / 2);
+            p.translate(17, p.height / 2);
             p.rotate(-p.HALF_PI);
             p.text("Number of Women Athletes", 0, 0);
             p.pop();
@@ -115,7 +115,7 @@
                 p.circle(x, y, 6);
             }
 
-            // Show tooltip
+            // Tooltip
             if (hoveredIndex !== -1) {
                 let year = years[hoveredIndex];
                 let count = counts[hoveredIndex];
@@ -123,24 +123,40 @@
                 let x = p.map(year, minYear, maxYear, margin, p.width - margin);
                 let y = p.map(count, minCount, maxCount, p.height - margin, margin);
 
-                // Highlight point
-                p.fill(255);
-                p.stroke(255);
+                let isWw2 = year === 1940 || year === 1944;
+
+                // Highlight point (blue normally, red for 1940/44)
+                if (isWw2) {
+                    p.fill(255, 80, 80);
+                    p.stroke(255, 80, 80);
+                } else {
+                    p.fill(255);
+                    p.stroke(255);
+                }
                 p.strokeWeight(2);
                 p.circle(x, y, 10);
+
+                let boxWidth = isWw2 ? 220 : 160;
+                let boxHeight = isWw2 ? 50 : 40;
 
                 // Tooltip box
                 p.noStroke();
                 p.fill(255);
-                p.rect(x + 12, y - 35, 120, 40, 5);
+                p.rect(x + 12, y - 45, boxWidth, boxHeight, 5);
 
                 // Tooltip text
                 p.fill(0);
                 p.textSize(12);
                 p.textAlign(p.LEFT, p.CENTER);
-                p.text("Year: " + year, x + 18, y - 22);
-                p.text("Athletes: " + count, x + 18, y - 7);
-            }            
+
+                if (isWw2) {
+                    p.text(year + " — Games canceled", x + 18, y - 30);
+                    p.text("No Olympics due to World War II", x + 18, y - 15);
+                } else {
+                    p.text("Year: " + year, x + 18, y - 30);
+                    p.text("Athletes: " + count, x + 18, y - 15);
+                }
+            }
         };
     });
 
