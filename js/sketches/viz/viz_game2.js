@@ -63,9 +63,9 @@
     };
 
     p.setup = function () {
-      var canvas = p.createCanvas(850, 450);
+      var canvas = p.createCanvas(850, 350);
       canvas.parent('viz_game2');
-      p.textFont('Arial');
+      p.textFont('Inria Serif');
     };
 
     p.draw = function () {
