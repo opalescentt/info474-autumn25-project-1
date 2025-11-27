@@ -22,7 +22,7 @@
   font-family: "Inria Serif","TiemposTextWeb-Regular","Georgia";
   font-size: 16px;
   line-height: 23px;
-  color: #f5f5f598;
+  color: #f5f5f5e1;
 }
 
 #sections .title {
@@ -36,7 +36,7 @@
 }
 
 #sections .subtitle {
-  font-family: "Inria Serif","TiemposTextWeb-Regular","Georgia";
+  font-family:"TiemposTextWeb-Regular","Georgia";
   font-size: 30px;
   margin-bottom: 2px;
   color: #f5f5f5;
@@ -164,3 +164,10 @@ body {
   margin: 0 auto;
 } */
 
+#viewSelect {
+  color: black;
+}
+
+#viewSelect:hover {
+  color: blue;
+}
