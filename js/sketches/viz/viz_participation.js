@@ -66,7 +66,6 @@
             let tickInterval = 8;  // choose: 4, 8, 12, etc.
 
             for (let year = minYear; year <= maxYear; year += tickInterval) {
-                // skip non-Olympic years (your dataset has 1940, 1944 as zero)
                 if (!years.includes(year)) continue;
             
                 let x = p.map(year, minYear, maxYear, margin, p.width - margin);
@@ -99,13 +98,49 @@
             }
             p.endShape();
 
+            // Tooltip detection
+            let hoveredIndex = -1;
+
+            // Draw Points + hover detection
             for (let i = 0; i < years.length; i++) {
                 let x = p.map(years[i], minYear, maxYear, margin, p.width - margin);
                 let y = p.map(counts[i], minCount, maxCount, p.height - margin, margin);
+
+                if (p.dist(p.mouseX, p.mouseY, x, y) < 8) {
+                    hoveredIndex = i;
+                }
+
                 p.fill(0, 150, 255);
                 p.noStroke();
                 p.circle(x, y, 6);
             }
+
+            // Show tooltip
+            if (hoveredIndex !== -1) {
+                let year = years[hoveredIndex];
+                let count = counts[hoveredIndex];
+
+                let x = p.map(year, minYear, maxYear, margin, p.width - margin);
+                let y = p.map(count, minCount, maxCount, p.height - margin, margin);
+
+                // Highlight point
+                p.fill(255);
+                p.stroke(255);
+                p.strokeWeight(2);
+                p.circle(x, y, 10);
+
+                // Tooltip box
+                p.noStroke();
+                p.fill(255);
+                p.rect(x + 12, y - 35, 120, 40, 5);
+
+                // Tooltip text
+                p.fill(0);
+                p.textSize(12);
+                p.textAlign(p.LEFT, p.CENTER);
+                p.text("Year: " + year, x + 18, y - 22);
+                p.text("Athletes: " + count, x + 18, y - 7);
+            }            
         };
     });
 
