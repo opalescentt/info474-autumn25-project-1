@@ -11,7 +11,22 @@
 
   new p5(function (p) {
     p.preload = function () {
-      data = p.loadTable(
+      freestyleData = p.loadTable(
+        "data/placeholder_table_viz_data.csv",
+        "csv",
+        "header"
+      );
+      backstrokeData = p.loadTable(
+        "data/placeholder_table_viz_data.csv",
+        "csv",
+        "header"
+      );
+      breastrokeData = p.loadTable(
+        "data/placeholder_table_viz_data.csv",
+        "csv",
+        "header"
+      );
+      butterflyData = p.loadTable(
         "data/placeholder_table_viz_data.csv",
         "csv",
         "header"
@@ -45,6 +60,7 @@
       for (i = 0; i < 4; i++) {
         p.push();
         p.fill("#3D3D3D");
+        p.stroke("#EFEFEF");
         p.rect(x_cell, y_cell, 200, 50);
         p.pop();
 
