@@ -6,20 +6,23 @@
     offsetY: 40,
   };
 
-  let data;
+  let freestyleData, backstrokeData, breaststrokeData, butterflyData;
   let nameArr, yearArr, countryArr, ageArr, heightArr, weightArr, timeArr;
 
   new p5(function (p) {
     p.preload = function () {
-      data = p.loadTable(
-        "data/placeholder_table_viz_data.csv",
+      freestyleData = p.loadTable("data/freestyle_data.csv", "csv", "header");
+      backstrokeData = p.loadTable("data/backstroke_data.csv", "csv", "header");
+      breaststrokeData = p.loadTable(
+        "data/breaststroke_data.csv",
         "csv",
         "header"
       );
+      butterflyData = p.loadTable("data/butterfly_data.csv", "csv", "header");
     };
 
     p.setup = function () {
-      var canvas = p.createCanvas(1200, 400);
+      var canvas = p.createCanvas(1200, 550);
       canvas.parent("viz_top10");
       p.textFont("Inria Serif");
     };
@@ -45,6 +48,7 @@
       for (i = 0; i < 4; i++) {
         p.push();
         p.fill("#3D3D3D");
+        p.stroke("#EFEFEF");
         p.rect(x_cell, y_cell, 200, 50);
         p.pop();
 
@@ -74,13 +78,13 @@
         "Time",
       ];
 
-      nameArr = data.getColumn("Athlete");
-      yearArr = data.getColumn("Year");
-      countryArr = data.getColumn("Team");
-      ageArr = data.getColumn("Age");
-      heightArr = data.getColumn("Height");
-      weightArr = data.getColumn("Weight");
-      timeArr = data.getColumn("Results");
+      nameArr = freestyleData.getColumn("Athlete");
+      yearArr = freestyleData.getColumn("Year");
+      countryArr = freestyleData.getColumn("Team");
+      ageArr = freestyleData.getColumn("Age");
+      heightArr = freestyleData.getColumn("Height");
+      weightArr = freestyleData.getColumn("Weight");
+      timeArr = freestyleData.getColumn("Results");
 
       let arrNames = [
         nameArr,
@@ -106,8 +110,8 @@
           name_adjustment = 50;
         }
         // second loop - fills in cells vertically
-        for (j = 0; j < 10; j++) {
-          if (j == 0) {
+        for (j = -1; j < 11; j++) {
+          if (j == -1) {
             p.push();
             p.fill("#252525");
             p.stroke("#EFEFEF");
