@@ -63,14 +63,19 @@
             p.fill(255);
 
                 // X-axis ticks (years)
-            for (let i = 0; i < years.length; i++) {
-                if (i === 0 || i === years.length - 1 || i % 4 === 0) {
-                    let x = p.map(years[i], minYear, maxYear, margin, p.width - margin);
-                    p.stroke(255);
-                    p.line(x, p.height - margin - 5, x, p.height - margin + 5);
-                    p.noStroke();
-                    p.text(years[i], x, p.height - margin + 20);
-                }
+            let tickInterval = 8;  // choose: 4, 8, 12, etc.
+
+            for (let year = minYear; year <= maxYear; year += tickInterval) {
+                // skip non-Olympic years (your dataset has 1940, 1944 as zero)
+                if (!years.includes(year)) continue;
+            
+                let x = p.map(year, minYear, maxYear, margin, p.width - margin);
+            
+                p.stroke(255);
+                p.line(x, p.height - margin - 5, x, p.height - margin + 5);
+            
+                p.noStroke();
+                p.text(year, x, p.height - margin + 20);
             }
 
             // Y-axis ticks (counts)
