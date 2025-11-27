@@ -27,7 +27,8 @@
 
     this.position = function () {
       // Always trigger at viewport center
-      var triggerY = window.pageYOffset + window.innerHeight / 2;
+      var triggerY = window.pageYOffset + window.innerHeight * 0.2;
+
 
       var sectionIndex = 0;
       // Loop backwards to find the last section whose top is <= triggerY
