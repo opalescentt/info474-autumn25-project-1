@@ -18,51 +18,45 @@
     this.resize = function () {
       self.sectionPositions = [];
       self.steps.forEach(function (el) {
-        // store absolute positions according to trigger type:
-        // - 'center' -> element vertical center
-        // - otherwise -> element top
         var rect = el.getBoundingClientRect();
         var top = rect.top + window.pageYOffset;
-        if (self.trigger === "center") {
-          var centerY = top + rect.height / 2;
-          self.sectionPositions.push(centerY);
-        } else {
-          self.sectionPositions.push(top);
-        }
+        // Always use element top as the activation point
+        self.sectionPositions.push(top);
       });
     };
 
     this.position = function () {
-      // Determine the Y coordinate (absolute page Y) at which we consider a step "active"
-      var triggerY;
-      if (self.trigger === "center") {
-        triggerY = window.pageYOffset + window.innerHeight / 2;
-      } else {
-        // default to a small offset from top of viewport
-        triggerY = window.pageYOffset + 10;
-      }
+      // Always trigger at viewport center
+      var triggerY = window.pageYOffset + window.innerHeight / 2;
 
       var sectionIndex = 0;
-      for (var i = 0; i < self.sectionPositions.length; i++) {
-        if (triggerY >= self.sectionPositions[i]) sectionIndex = i;
-        else break;
+      // Loop backwards to find the last section whose top is <= triggerY
+      for (var i = self.sectionPositions.length - 1; i >= 0; i--) {
+        if (triggerY >= self.sectionPositions[i]) {
+          sectionIndex = i;
+          break;
+        }
       }
-      sectionIndex = Math.min(self.sectionPositions.length - 1, sectionIndex);
+
+      // clamp to valid range
+      sectionIndex = Math.max(
+        0,
+        Math.min(self.sectionPositions.length - 1, sectionIndex)
+      );
 
       if (self.currentIndex !== sectionIndex) {
         self.currentIndex = sectionIndex;
         self.onActive(sectionIndex);
       }
 
-      // Compute progress as fraction through the current section's
-      // bounding box for finer-grained values (0..1).
+      // Compute progress
       var elem = self.steps[sectionIndex];
+      if (!elem) return;
       var rect = elem.getBoundingClientRect();
       var elemTop = rect.top + window.pageYOffset;
-      var elemHeight = rect.height || 1; // avoid divide-by-zero
+      var elemHeight = rect.height || 1;
       var rawSectionProgress = (triggerY - elemTop) / elemHeight;
       var progress = Math.max(0, Math.min(1, rawSectionProgress));
-      // console.log('scroller: sectionIndex=', sectionIndex, ' progress=', progress.toFixed(3));
       self.onProgress(sectionIndex, progress);
     };
 
@@ -76,29 +70,11 @@
 
   Scroller.prototype.on = function (action, cb) {
     if (action === "active") {
-      this.onActive = (index) => {
-        // Hide all #vis containers
-        this.steps.forEach((step) => {
-          const vis = step.querySelector("#vis");
-          if (vis) {
-            vis.classList.remove("vis-visible");
-            vis.classList.add("vis-hidden");
-          }
-        });
-
-        // Show the #vis container for the active step
-        const activeStep = this.steps[index];
-        const activeVis = activeStep.querySelector("#vis");
-        if (activeVis) {
-          activeVis.classList.remove("vis-hidden");
-          activeVis.classList.add("vis-visible");
-        }
-
-        // Call the user-defined callback (if provided)
-        cb(index);
-      };
+      this.onActive = cb;
     }
-    if (action === "progress") this.onProgress = cb;
+    if (action === "progress") {
+      this.onProgress = cb;
+    }
     return this;
   };
 

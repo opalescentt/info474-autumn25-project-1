@@ -110,6 +110,7 @@
             // highlight steps (light coupling — just visual text opacity)
             document.querySelectorAll(".step").forEach(function (el, i) {
               el.style.opacity = i === index ? "1" : "0.1";
+              el.style.transition = "opacity 0.3s ease";
             });
 
             // Determine if the active step defines a custom active-index
