@@ -61,7 +61,12 @@ const worldMapSketch = (p) => {
   
     p.draw = () => {
       p.background(25);
-  
+
+      // Title
+      p.fill(255);
+      p.textSize(18);
+      p.text("Women Swimmer Participation by Country (" + currentYear + ")", 20, 40);
+    
       // Draw map
       worldMap.features.forEach((feature) => drawCountry(feature));
     };
@@ -155,7 +160,7 @@ const worldMapSketch = (p) => {
     // Geo projection
     function project(lon, lat) {
       let x = p.map(lon, -180, 180, 0, p.width);
-      let y = p.map(lat, 90, -90, 0, p.height - 80); // leave space for slider
+      let y = p.map(lat, 90, -90, 0, p.height - 20) + 40; 
       return p.createVector(x, y);
     }
   
