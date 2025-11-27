@@ -12,7 +12,7 @@
       // trigger: where on the viewport a step becomes "active".
       // 'center' => when the step reaches the vertical center of the viewport
       // 'top' => when the step reaches the top (small offset)
-      trigger: "center",
+      trigger: "top",
       visHiddenClass: "vis-hidden",
       visVisibleClass: "vis-visible",
     };
@@ -196,4 +196,5 @@
   } else {
     displayData();
   }
+  
 })();
