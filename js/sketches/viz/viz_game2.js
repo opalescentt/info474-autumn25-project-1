@@ -10,37 +10,37 @@
       x: 'Age', y: 'Results', 
       xLabel: 'Age (years)', yLabel: 'Results (seconds)', 
       title: 'Age vs Results',
-      observation: 'Most medalists are between 21-29 years old, with peak performance around age 25.'
+      observation: 'Results range from 51 to 63 seconds across all ages, with no obvious pattern showing older or younger swimmers perform better.'
     },
     { 
       x: 'Height', y: 'Results', 
       xLabel: 'Height (cm)', yLabel: 'Results (seconds)', 
       title: 'Height vs Results',
-      observation: 'Taller swimmers (170-180cm) tend to have faster times, though height alone doesn\'t guarantee success.'
+      observation: 'Performance varies widely across all heights (165-186cm), with both fast and slow times appearing throughout the range. Height alone doesn\'t determine success.'
     },
     { 
       x: 'Weight', y: 'Results', 
       xLabel: 'Weight (kg)', yLabel: 'Results (seconds)', 
       title: 'Weight vs Results',
-      observation: 'Weight shows less correlation with performance compared to height and age.'
+      observation: 'Performance varies widely across all weight ranges, with no clear pattern linking weight to faster or slower times.'
     },
     { 
       x: 'Height', y: 'Weight', 
       xLabel: 'Height (cm)', yLabel: 'Weight (kg)', 
       title: 'Height vs Weight',
-      observation: 'Height and weight show a positive correlation, as taller athletes typically weigh more.'
+      observation: 'There is a moderate positive correlation between height and weight among Olympic swimmers; taller athletes tend to weigh more.'
     },
     { 
       x: 'Age', y: 'Height', 
       xLabel: 'Age (years)', yLabel: 'Height (cm)', 
       title: 'Age vs Height',
-      observation: 'No significant correlation between age and height among Olympic swimmers.'
+      observation: ''
     },
     { 
       x: 'Age', y: 'Weight', 
       xLabel: 'Age (years)', yLabel: 'Weight (kg)', 
       title: 'Age vs Weight',
-      observation: 'Weight varies across ages, with no clear pattern suggesting experience affects body composition.'
+      observation: ''
     }
   ];
 
