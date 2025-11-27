@@ -47,6 +47,18 @@ const worldMapSketch = (p) => {
       dataTable = p.loadTable("data/country_map.csv", "csv", "header");
     };
   
+    p.setup = () => {
+      p.createCanvas(850, 450); 
+  
+      extractYears();
+      createYearSlider();
+  
+      currentYear = years[0];
+      updateYearCounts(currentYear);
+  
+      p.noLoop();
+    };
+  
   };
   
   new p5(worldMapSketch, "viz_worldmap");
