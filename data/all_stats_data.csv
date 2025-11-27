@@ -1,0 +1,80 @@
+Athlete,Year,Location,Team,Age,Height,Weight,Stroke,Distance,Results
+0,Beth Botsford,1996,Atlanta,USA,15,165,49,Backstroke,100m,61.2
+1,Caren Metschuck,1980,Moscow,GDR,17,184,76,Butterfly,100m,60.4
+2,Carin Alice Cone,1956,Melbourne,USA,16,167,59,Backstroke,100m,72.9
+3,Carolyn Jane Schuler,1960,Rome,USA,17,167.0,63,Butterfly,100m,69.5
+4,Catherine L. Carr,1972,Munich,USA,18,170,52,Breaststroke,100m,73.6
+5,Cathy Ferguson,1964,Tokyo,USA,16,173,61,Backstroke,100m,67.7
+6,Dana Vollmer,2012,London,USA,25,185,68,Butterfly,100m,55.98
+7,Diana Mocanu,2000,Sydney,ROU,16,170,68,Backstroke,100m,60.2
+8,Dina Willemina Jacoba Senff,1936,Berlin,NED,16,,,Backstroke,100m,78.9
+9,Djurdjica Bjedov,1968,City,YUG,21,170,65,Breaststroke,100m,75.8
+10,Eleanor Holm,1932,Angeles,USA,19,,,Backstroke,100m,79.4
+11,Alena Rudkovskaya,1992,Barcelona,EUN,19,,,Breaststroke,100m,68.0
+12,Franziska Van Almsick,1992,Barcelona,GER,14,181,66,Butterfly,100m,60.7
+13,Hannelore Anke,1976,Montreal,GDR,19,160,52,Breaststroke,100m,71.2
+14,Hitomi Kashima,1996,Atlanta,JPN,16,162,52,Butterfly,100m,60.1
+15,Inge De Bruijn,2000,Sydney,NED,27,174,55,Butterfly,100m,56.61
+16,Janel Simone Jorgensen,1988,Seoul,USA,17,178,66,Butterfly,100m,60.5
+17,Jenna Leigh Johnson,1984,Angeles,USA,16,180,63,Butterfly,100m,60.2
+18,Joan Cynthia Harrison,1952,Helsinki,RSA,17,,,Backstroke,100m,74.3
+19,Judith Brenda Grinham,1956,Melbourne,GBR,17,,,Backstroke,100m,72.9
+20,Karen Margrethe Harup,1948,London,DEN,24,,,Backstroke,100m,74.4
+21,Katinka Hosszu,2016,Rio,HUN,27,175,65,Backstroke,100m,58.45
+22,Kaye Marie Hall,1968,City,USA,17,171,65,Backstroke,100m,66.2
+23,Kaylee Mckeown,2020,Tokyo,AUS,19,176,60,Backstroke,100m,57.47
+24,Kornelia Ender,1976,Montreal,GDR,18,172,59,Butterfly,100m,60.1
+25,Kristin Otto,1988,Seoul,GDR,22,185,70,Backstroke,100m,60.9
+26,Krisztina Egerszegi,1992,Barcelona,HUN,17,174,57,Backstroke,100m,60.7
+27,Laure Manaudou,2008,Beijing,FRA,22,180,69,Backstroke,100m,60.1
+28,Leisel Jones,2008,Beijing,AUS,23,177,68,Breaststroke,100m,65.2
+29,Libby Trickett,2008,Beijing,AUS,23,167,60,Butterfly,100m,56.73
+30,Lilly King,2016,Rio,USA,19,175,70,Breaststroke,100m,64.9
+31,Lydia Jacoby,2020,Tokyo,USA,16,,,Breaststroke,100m,64.9
+32,Lynette Mcclements,1968,City,AUS,17,177,66,Butterfly,100m,65.5
+33,Lynn Edythe Burke,1960,Rome,USA,17,173,61,Backstroke,100m,69.3
+34,Margaret Mac Neil,2020,Tokyo,CAN,2020,,,Butterfly,100m,55.59
+35,Maria Johanna Philipsen-Braun,1928,Amsterdam,NED,17,,,Backstroke,100m,82.0
+36,Mayumi Aoki,1972,Munich,JPN,19,164,63,Butterfly,100m,63.3
+37,Megan Quann,2000,Sydney,USA,16,170,64,Breaststroke,100m,67.1
+38,Melissa Louise Belote,1972,Munich,USA,16,171,60,Backstroke,100m,65.8
+39,Natalie Coughlin,2004,Athens,USA,22,173,63,Backstroke,100m,60.4
+40,Penelope Heyns,1996,Atlanta,RSA,22,174,63,Breaststroke,100m,67.7
+41,Petra Van Staveren,1984,Angeles,NED,18,169,60,Breaststroke,100m,69.9
+42,Petria Thomas,2004,Athens,AUS,29,173,64,Butterfly,100m,57.72
+43,Rica Reinisch,1980,Moscow,GDR,15,178,66,Backstroke,100m,60.9
+44,Ruta Meilutyte,2012,London,LTU,15,176,75,Breaststroke,100m,65.5
+45,Sharon Marie Stouder,1964,Tokyo,USA,16,173,61,Butterfly,100m,64.7
+46,Shelley Isabel Mann,1956,Melbourne,USA,19,172,61,Butterfly,100m,71.0
+47,Sybil Bauer,1924,Paris,USA,21,,,Backstroke,100m,83.2
+48,Tania Bogomilova-Dangalakova,1988,Seoul,BUL,24,172,59,Breaststroke,100m,67.9
+49,Theresa Andrews,1984,Angeles,USA,21,167,62,Backstroke,100m,62.5
+50,Ulrike Richter,1976,Montreal,GDR,17,173,66,Backstroke,100m,61.8
+51,Ute Geweniger,1980,Moscow,GDR,16,179,62,Breaststroke,100m,70.2
+52,Yuanhui Fu,2012,London,CHN,16,179,63,Backstroke,100m,60.5
+53,Emma Mckeon,2020,Tokyo,AUS,26,180,60,Freestyle,100m,51.96
+54,Penny Oleksiak,2016,Rio,CAN,16,185,68,Freestyle,100m,52.7
+55,Simone Manuel,2016,Rio,USA,20,178,73,Freestyle,100m,52.7
+56,Ranomi Kromowidjojo,2012,London,NED,21,180,72,Freestyle,100m,53.0
+57,Britta Steffen,2008,Beijing,GER,24,180,60,Freestyle,100m,53.12
+58,Inge De Bruijn,2000,Sydney,NED,27,174,55,Freestyle,100m,53.83
+59,Jodie Henry,2004,Athens,AUS,21,176,63,Freestyle,100m,53.84
+60,Jingyi Le,1996,Atlanta,CHN,21,178,68,Freestyle,100m,54.5
+61,Yong Zhuang,1992,Barcelona,CHN,20,172,68,Freestyle,100m,54.64
+62,Barbara Krause,1980,Moscow,GDR,21,180,68,Freestyle,100m,54.79
+63,Kristin Otto,1988,Seoul,GDR,22,185,70,Freestyle,100m,54.93
+64,Kornelia Ender,1976,Montreal,GDR,18,172,59,Freestyle,100m,55.65
+65,Carolyn Steinseifer,1984,Angeles,USA,16,167,57,Freestyle,100m,55.92
+66,Nancy Lynn Hogshead,1984,Angeles,USA,22,172,66,Freestyle,100m,55.92
+67,Magdolna Patoh,1972,Munich,HUN,24,174,61,Freestyle,100m,60.0
+68,Jane Margo Henne,1968,City,USA,21,170,64,Freestyle,100m,60.0
+69,Kathy Ellis,1964,Tokyo,USA,18,169,59,Freestyle,100m,60.8
+70,Dawn Fraser,1960,Rome,AUS,23,172,67,Freestyle,100m,61.2
+71,Dawn Fraser,1956,Melbourne,AUS,19,172,67,Freestyle,100m,62.0
+72,Hendrika Mastenbroek,1936,Berlin,NED,17,,,Freestyle,100m,65.9
+73,Greta Marie Andersen,1948,London,DEN,21,,,Freestyle,100m,66.3
+74,Katalin Szöke,1952,Helsinki,HUN,17,,,Freestyle,100m,66.8
+75,Helene Madison,1932,Angeles,USA,19,,,Freestyle,100m,66.8
+76,Albina Lucy Osipowich,1928,Amsterdam,USA,17,,,Freestyle,100m,71.0
+76,Ethel Lackie,1924,Paris,USA,17,,,Freestyle,100m,72.4
+78,Fanny Durack,1912,Stockholm,ANZ,23,,,Freestyle,100m,82.2

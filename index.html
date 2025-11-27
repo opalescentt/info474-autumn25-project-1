@@ -29,23 +29,28 @@
           <div class="subtitle">
             <p>
               In 1912, <span style="color: #C80428;">Fanny Durack</span> from <span style="color: #0281C8;">Australia</span> won the first Olympic Gold medal earned by a woman in 100m freestyle, 
-            with a time of <span style="color: #FCB131;">1:22.200.</span>
+            with a time of  <span style="color: #FCB131;">1 minute and 22.2 seconds.</span>
           </p>
         <img src="assets/fannydurack.jpg"/>
+        <div class="small-caption" style="margin-right: 0px;">
+          An image of Fanny Durack at the 1912 Olympics in Stockholm, Sweden.
+          </div>
       </div>
         </section>
         <section class="step" data-active-index="0">
           <div class="subtitle">Since then, women have only been catching up to men.</div>
-          <div id="viz_gap"></div>
+          <div class="viz" id="viz_gap"></div>
+          <div class="small-caption">
+            The speed of the athlete winning an Olympic Gold Medal for 100m freestyle, men and women in 20 year increments from 1912-2012. Over time, women show the largest decrease in overall time, catching up to men as seen from the gap getting shorter.
+          </div>
         </section>
         <section class="step" data-active-index="1">
-          <div class="subtitle">1912 was the first year women were allowed to participate since the event beginning in 1896, and women 
-          have only gotten better since.</div>
+          <div class="subtitle">1912 was the first year women were allowed to participate since the event beginning in 1896, and participation has skyrocketed since. </div>
         </section>
         <section class="step" data-active-index="2">
           <div class="subtitle">The Evolution of Women’s Participation in Swimming</div>
           <br /><br />
-          <div id="viz_participation"></div>
+          <div class="viz" id="viz_participation"></div>
           <div class="small-caption">
             Women's participation in Olympic swimming rose steadily from 1912 to 2016 as access, 
             support, and visibility for women expanded. The gap between 1936 and 1948 appears 
@@ -60,40 +65,55 @@
         <section class="step" data-active-index="3">
           <div class="subtitle">Top 10 Fastest Women's 100m Freestyle (1912-2020)</div>
           <span style="color: #FCB131;">Olympic Gold Medal Winners - Ranked by Speed</span>
-          <div id="viz_top10"></div>
+          <div class="viz" id="viz_top10"></div>
         </section>
-        <div class="container">
         <section class="step" data-active-index="4">
           <div class="subtitle">The Hidden Pattern Behind Aquatic Success</div>
-          Can We Predict the Champions? 
-          <div id="viz_game1"></div>
+          Can We Predict the Champions?<br /><br />
+          <div id="viz_game1"></div>          
         </section>
-        </div>
-        <div id="extra-space">
-        </div>
+        <section class="step" data-active-index="4">
+          <div class="subtitle">But...Are these traits enough to explain winning performance, or do other factors matter more?</div>
+          Now that we’ve explored the distribution, let’s see whether these traits actually correlate with performance.<br /><br />
+          <div id="viz_game1"></div>          
+        </section>
         <section class="step" data-active-index="5">
-          <div class="subtitle">How does age affect each type Women aquatic sport performance?</div>
-          Interactive graph goes here.
+          
+          <div class="subtitle">Do Age, Height, and Weight Predict Swimming Performance?</div><br />
+          We hypothesize that swimmers who are <span style="color: #FCB131;">older (more experienced),
+          taller, or heavier (stronger) tend to have faster swim result.</span> These traits might give 
+          athletes advantages such as reach, power, or efficiency in the water.<br /><br />
+          Use the dropdown to compare Race Results against Age, Height, and Weight.<br /><br />
+          <div id="controls">
+            <label for="viewSelect" style="margin-right: 10px; font-size: 16px;">Select View:</label>
+            <select id="viewSelect">
+              <option value="0">Age vs Results</option>
+              <option value="1">Height vs Results</option>
+              <option value="2">Weight vs Results</option>
+              <option value="3">Height vs Weight</option>
+              <option value="4">Age vs Height</option>
+              <option value="5">Age vs Weight</option>
+            </select>
+          </div>
           <div id="viz_game2"></div>
-        </section>
-        <section class="step" data-active-index="6">
           <div class="subtitle"></div>
-          Conclusion paragraph for the heatmap analysis: Most gold medalists were 22–25 years old 
-          and around 175 cm tall.<br /><br />Lorem Ipsum is simply dummy text of the printing and 
-          typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 
-          the 1500s, when an unknown printer took a galley of type and scrambled it to make a type 
-          specimen book. It has survived not only five centuries, but also the leap into electronic 
-          typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
-          of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing 
-          software like Aldus PageMaker including versions of Lorem Ipsum.
+          Across Age, Height, and Weight, <span style="color: #3fd487;">there is no strong or consistent relationship with performance.</span><br /><br /> The analysis shows no strong linear correlations between 
+          Age, Height, Weight, and Results, with data points widely scattered. This supports the earlier 
+          regression finding that these variables have limited predictive power for women's 100m freestyle 
+          gold medal times. The small sample size (19 entries) further limits trend detection, though subtle 
+          non-linear patterns might exist. <span style="color: #1da1ee;">Our data exploration shows that these physical attributes 
+          alone cannot explain the variation in winning times.</span>
         </section>
         <section class="step" data-active-index="7">
-          <div class="subtitle">Winning Patterns from the Data</div>
-          Peak Age: 20-25 years (normally 25 for peak)<br /><br />Optimal Height: 175-180cm<br /><br />Weight Range: 62-70kg
+          <div class="subtitle">🥇 Body Metric Distributions from our Data</div>
+          <ul>
+            <li>Typical Age range: 16 to 22 years (median 19)</li>
+            <li>Typical Height range: 170 to 178 cm (median 173)</li>
+            <li>Typical Weight range: 60 to 67 kg (median 63)</li>
+          </ul>
         </section>
         <section class="step" data-active-index="8">
-          <div class="subtitle">Despite not matching the supposed <span style="color: #FCB131;">“golden ratio”</span> for ideal athletic factors, these women still 
-            went on to achieve gold medal victories.</div> 
+          <div class="subtitle">Even though these athletes fall outside the usual body metric patterns, they still earned gold medals, showing that outliers can thrive and that success is shaped by far more than physical measurements.</div> 
           <div id='vis' class='vis-hidden'></div><!-- Edit this using scroller -->
         </section>
         <section class="step" data-active-index="9">
