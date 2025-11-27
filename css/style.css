@@ -35,6 +35,10 @@
   line-height: 1.2em;
 }
 
+.intro {
+  font-size: 20px;
+}
+
 #sections .subtitle {
   font-family:"TiemposTextWeb-Regular","Georgia";
   font-size: 30px;
