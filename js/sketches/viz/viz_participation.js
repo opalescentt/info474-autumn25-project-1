@@ -124,9 +124,10 @@
                 let y = p.map(count, minCount, maxCount, p.height - margin, margin);
 
                 let isWw2 = year === 1940 || year === 1944;
+                let ww1 = year === 1916
 
                 // Highlight point (blue normally, red for 1940/44)
-                if (isWw2) {
+                if (isWw2 || ww1) {
                     p.fill(255, 80, 80);
                     p.stroke(255, 80, 80);
                 } else {
@@ -136,8 +137,8 @@
                 p.strokeWeight(2);
                 p.circle(x, y, 10);
 
-                let boxWidth = isWw2 ? 220 : 160;
-                let boxHeight = isWw2 ? 50 : 40;
+                let boxWidth = (isWw2 || ww1) ? 220 : 160;
+                let boxHeight = (isWw2 || ww1) ? 50 : 40;
 
                 // Tooltip box
                 p.noStroke();
@@ -152,6 +153,9 @@
                 if (isWw2) {
                     p.text(year + " — Games canceled", x + 18, y - 30);
                     p.text("No Olympics due to World War II", x + 18, y - 15);
+                } else if (ww1) {
+                    p.text(year + " — Games canceled", x + 18, y - 30);
+                    p.text("No Olympics due to World War I", x + 18, y - 15);
                 } else {
                     p.text("Year: " + year, x + 18, y - 30);
                     p.text("Athletes: " + count, x + 18, y - 15);

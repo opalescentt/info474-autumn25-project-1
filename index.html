@@ -54,17 +54,27 @@
           <br /><br />
           <div class="viz" id="viz_participation"></div>
           <div class="small-caption">
-            Women's participation in Olympic swimming rose steadily from 1912 to 2016 as access, 
-            support, and visibility for women expanded. The gap between 1936 and 1948 appears 
-            because the Games were canceled in 1940 and 1944 during World War II.
+          Women's participation in Olympic swimming rose steadily from 1912 to 2016 as access, 
+          support, and visibility for women expanded. The gaps in 1916, 1940, and 1944 appear 
+          because the Games were canceled during World War I (1916) and World War II (1940, 1944).
           </div>
-          The evolution of women’s participation in swimming shows how far the sport has come. Early restrictions and limited
-          opportunities kept many women out of major competitions, but steady progress over the decades opened more doors. 
-          As rules changed and support increased, more women entered the pool, competed at higher levels, and gained the 
-          visibility they deserved. This growth reflects a larger shift toward inclusion and highlights how expanding access 
-          has allowed generations of female athletes to rise and make their mark.
+          The evolution of women’s participation in swimming shows how far the sport has come. Early 
+          restrictions and limited opportunities kept many women out of major competitions, but steady 
+          progress over the decades opened more doors. As rules changed and support increased, more 
+          women entered the pool, competed at higher levels, and gained the visibility they deserved. 
+          This growth reflects a larger shift toward inclusion and highlights how expanding access has 
+          allowed generations of female athletes to rise and make their mark.
         </section>
         <section class="step" data-active-index="3">
+          <div class="subtitle">The Global Rise of Women in Olympic Swimming</div>
+          <br /><br />
+          Women’s Olympic swimming began with participation from only a handful of countries. Over the following century, the movement 
+          toward gender inclusion in sports helped more nations develop and support female swimmers. This interactive map reveals how 
+          that growth unfolded around the world. Slide through the years to watch new countries appear as women gained broader access 
+          to training, competition, and representation on the Olympic stage.
+          <div id="viz_worldmap"></div>
+        </section>
+        <section class="step" data-active-index="4">
           <div class="subtitle">Top 10 Fastest Women's 100m Freestyle</div>
           <span style="color: #FCB131;">Olympic Gold Medal Winners - Ranked by Speed</span>
           <div style="margin: 15px 0;">
@@ -75,23 +85,23 @@
               <option value="2">Breaststroke</option>
               <option value="3">Butterfly</option>
             </select>
-          </div>
+          </div>x
           <div id="viz_top10"></div>
           <div class="small-caption">
             A table of the fastest times of Olympic athletes for 4 different 100m swimming strokes. We can see that while generally athletes get faster over time, there are a few years where athletes from previous games were marginally faster than the next. Note that height and weight data isn't public for every athlete, resulting in a few empty cells.
           </div>
         </section>
-        <section class="step" data-active-index="4">
+        <section class="step" data-active-index="5">
           <div class="subtitle">The Hidden Pattern Behind Aquatic Success</div>
           Can We Predict the Champions?<br /><br />
           <div id="viz_game1"></div>          
         </section>
-        <section class="step" data-active-index="5">
+        <section class="step" data-active-index="6">
           <div class="subtitle">But...Are these traits enough to explain winning performance, or do other factors matter more?</div>
           Now that we’ve explored the distribution, let’s see whether these traits actually correlate with performance.<br /><br />
           <div id="viz_game1"></div>          
         </section>
-        <section class="step" data-active-index="6">
+        <section class="step" data-active-index="7">
           
           <div class="subtitle">Do Age, Height, and Weight Predict Swimming Performance?</div><br />
           We hypothesize that swimmers who are <span style="color: #FCB131;">older (more experienced),
@@ -118,7 +128,7 @@
           non-linear patterns might exist. <span style="color: #1da1ee;">Our data exploration shows that these physical attributes 
           alone cannot explain the variation in winning times.</span>
         </section>
-        <section class="step" data-active-index="7">
+        <section class="step" data-active-index="8">
           <div class="subtitle">🥇 Body Metric Distributions from our Data</div>
           <ul>
             <li>Typical Age range: 16 to 22 years (median 19)</li>
@@ -126,11 +136,11 @@
             <li>Typical Weight range: 60 to 67 kg (median 63)</li>
           </ul>
         </section>
-        <section class="step" data-active-index="8">
+        <section class="step" data-active-index="9">
           <div class="subtitle">Even though these athletes fall outside the usual body metric patterns, they still earned gold medals, showing that outliers can thrive and that success is shaped by far more than physical measurements.</div> 
           <div id='vis' class='vis-hidden'></div><!-- Edit this using scroller -->
         </section>
-        <section class="step" data-active-index="9">
+        <section class="step" data-active-index="10">
           <div class="subtitle"></div>
           These women athletes proved that success is not limited by genetics or by any ideal standard for body type. Even 
           without fitting the typical expectations of what a champion should look like, they pushed through with hard work 
@@ -174,6 +184,8 @@
   <script src="js/sketches/viz/viz_game1.js"></script>
   <script src="js/sketches/viz/viz_game2.js"></script>
   <script src="js/sketches/viz/viz_participation.js"></script>
+  <script src="js/sketches/viz/viz_map.js"></script>
+
 
 </body>
 
