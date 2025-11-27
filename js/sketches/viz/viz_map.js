@@ -50,8 +50,8 @@ const worldMapSketch = (p) => {
     p.setup = () => {
       p.createCanvas(850, 450); 
   
-    //   extractYears();
-    //   createYearSlider();
+      extractYears();
+      createYearSlider();
   
       currentYear = years[0];
     //   updateYearCounts(currentYear);
@@ -65,6 +65,35 @@ const worldMapSketch = (p) => {
       // Draw map
       worldMap.features.forEach((feature) => drawCountry(feature));
     };
+
+    function extractYears() {
+        let yearSet = new Set();
+    
+        for (let r = 0; r < dataTable.getRowCount(); r++) {
+          let yr = dataTable.getString(r, "Year");
+          if (yr && yr !== "NaN") yearSet.add(yr);
+        }
+    
+        years = Array.from(yearSet).sort((a, b) => a - b);
+    }
+
+    // Create slider
+    function createYearSlider() {
+        slider = p.createSlider(0, years.length - 1, 0, 1);
+      
+        slider.parent("viz_worldmap");
+      
+        slider.style("position", "relative");
+        slider.style("margin-top", "10px");
+        slider.style("width", "90%");
+      
+        slider.input(() => {
+          let index = slider.value();
+          currentYear = years[index];
+          updateYearCounts(currentYear);
+          p.redraw();
+        });
+    }
   
     // Draw each country
     function drawCountry(feature) {
