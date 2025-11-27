@@ -44,13 +44,16 @@
       // text
       p.textSize(20);
       p.text("Year", 45, 45);
-      p.text("Time (s)", 780, 380);
-      p.text("40s", 80, 380);
+      p.text("Time (s)", 760, 380);
+      p.text("40", 90, 380);
 
+      let x_axis_label = 40;
       // axis ticks
       for (i = 1; i < 45; i++) {
         if (i % 5 == 0) {
+          x_axis_label += 5;
           p.line(100 + i * pix_per_sec, 345, 100 + i * pix_per_sec, 355);
+          p.text(x_axis_label, 100 + i * pix_per_sec - 9, 380);
         } else {
           p.line(100 + i * pix_per_sec, 348, 100 + i * pix_per_sec, 352);
         }

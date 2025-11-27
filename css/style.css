@@ -58,6 +58,13 @@
   /* background-color: #ddd; */
 }
 
+.viz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 /* visibility helpers for popup effect controlled by VisualController */
 .vis-hidden {
   opacity: 0;
