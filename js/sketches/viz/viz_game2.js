@@ -1,6 +1,6 @@
 (function () {
   var manager = {
-    margin: { top: 50, right: 10, bottom: 110, left: 45 },
+    margin: { top: 75, right: 10, bottom: 110, left: 45 },
     data: null
   };
 
@@ -9,19 +9,16 @@
       x: 'Age', y: 'Results', 
       xLabel: 'Age (years)', yLabel: 'Results (sec)', 
       title: 'Age vs Results',
-      observation: 'Results range from 51 to 63 seconds across all ages, with no obvious pattern.'
     },
     { 
       x: 'Height', y: 'Results', 
       xLabel: 'Height (cm)', yLabel: 'Results (sec)', 
       title: 'Height vs Results',
-      observation: 'Performance varies widely across all heights. Height alone doesn\'t determine success.'
     },
     { 
       x: 'Weight', y: 'Results', 
       xLabel: 'Weight (kg)', yLabel: 'Results (sec)', 
       title: 'Weight vs Results',
-      observation: 'Performance varies widely across all weight ranges, with no clear pattern.'
     }
   ];
 
@@ -51,6 +48,10 @@
 
     p.draw = function () {
       p.background(255);
+      p.fill(0);
+      p.textSize(20);
+      p.text("Hover over each dot to see athlete's details.", p.width / 3.5, 20);
+
 
       var plotWidth = (p.width - 60) / 3 - manager.margin.left - manager.margin.right;
       var plotHeight = p.height - manager.margin.top - manager.margin.bottom;
