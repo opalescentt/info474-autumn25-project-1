@@ -9,19 +9,16 @@
       x: 'Age', y: 'Results', 
       xLabel: 'Age (years)', yLabel: 'Results (sec)', 
       title: 'Age vs Results',
-      observation: 'Results range from 51 to 63 seconds across all ages, with no obvious pattern.'
     },
     { 
       x: 'Height', y: 'Results', 
       xLabel: 'Height (cm)', yLabel: 'Results (sec)', 
       title: 'Height vs Results',
-      observation: 'Performance varies widely across all heights. Height alone doesn\'t determine success.'
     },
     { 
       x: 'Weight', y: 'Results', 
       xLabel: 'Weight (kg)', yLabel: 'Results (sec)', 
       title: 'Weight vs Results',
-      observation: 'Performance varies widely across all weight ranges, with no clear pattern.'
     }
   ];
 
