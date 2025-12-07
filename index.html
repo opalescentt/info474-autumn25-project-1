@@ -36,7 +36,7 @@
         <img src="assets/fannydurack.jpg"/>
         <div class="small-caption" style="margin-right: 0px;">
           An image of Fanny Durack at the 1912 Olympics in Stockholm, Sweden.
-          </div>
+        </div>
       </div>
         </section>
         <section class="step" data-active-index="0">
@@ -49,6 +49,10 @@
         </section>
         <section class="step" data-active-index="1">
           <div class="subtitle">1912 was the first year women were allowed to participate since the event beginning in 1896, and participation has skyrocketed since. </div>
+          <img src="assets/1912_women_olympics.jpg"/>
+          <div class="small-caption">
+            An image of 1912 Olympics in Stockholm, Sweden.
+          </div>
         </section>
         <section class="step" data-active-index="2">
           <div class="subtitle">The Evolution of Women’s Participation in Swimming</div>
@@ -69,13 +73,14 @@
         </section>
         <section class="step" data-active-index="3">
           <div class="subtitle">The Global Rise of Women in Olympic Swimming</div>
-          <br /><br />
+          <div id="viz_worldmap"></div>
+          Graph made by Megan Pham
+          <div class="small-caption">
           Women’s Olympic swimming began with participation from only a handful of countries. Over the following century, the movement 
           toward gender inclusion in sports helped more nations develop and support female swimmers. This interactive map reveals how 
           that growth unfolded around the world. Slide through the years to watch new countries appear as women gained broader access 
           to training, competition, and representation on the Olympic stage.
-          <div id="viz_worldmap"></div>
-          Graph made by Megan Pham
+          </div>
         </section>
         <section class="step" data-active-index="4">
           <div class="subtitle">Top 10 Fastest Women's 100m Strokes</div>
@@ -96,10 +101,13 @@
           </div>
         </section>
         <section class="step" data-active-index="5">
-          <div class="subtitle">The Hidden Pattern Behind Aquatic Success</div>
-          Can We Predict the Champions?<br /><br />
+          <div class="subtitle">What Do Olympic Aquatic Medalists Look Like?</div>
+          Explore the Demographic Trends Behind the Podium<br /><br />
           <div id="viz_game1"></div>    
           Graph made by Charlene Chang      
+          <div class="small-caption">
+            Distribution of age, height, and weight for Olympic aquatic medalists, with most athletes falling between 16–22 years old, 170–178 cm (5'7"–5'10") tall, and 60–67 kg (132–148 lbs).
+          </div>
         </section>
         <section class="step" data-active-index="6">
           <div class="subtitle">But...Are these traits enough to explain winning performance, or do other factors matter more?</div>
@@ -123,15 +131,9 @@
           </div>
           <div id="viz_game2"></div>
           Graph made by Charlene Chang
-        </section>
-        <section class="step" data-active-index="7">
-          <div class="subtitle">Observation: </div><br />
-          Across Age, Height, and Weight, <span style="color: #3fd487;">there is no strong or consistent relationship with performance.</span><br /><br /> The analysis shows no strong linear correlations between 
-          Age, Height, Weight, and Results, with data points widely scattered. This supports the earlier 
-          regression finding that these variables have limited predictive power for women's 100m freestyle 
-          gold medal times. The small sample size (19 entries) further limits trend detection, though subtle 
-          non-linear patterns might exist. <span style="color: #1da1ee;">Our data exploration shows that these physical attributes 
-          alone cannot explain the variation in winning times.</span>
+          <div class="small-caption">
+            Across Age, Height, and Weight, we found no strong or consistent relationship with performance. Data points are widely scattered, and none of these variables show meaningful linear correlations with race results. This aligns with our regression analysis, which also indicated that Age, Height, and Weight have limited predictive power for women’s 100m freestyle gold-medal times. The small sample size (19 data points) further reduces our ability to detect trends, though minor non-linear patterns may still exist. Overall, these physical attributes alone do not explain the variation in winning times.
+          </div>
         </section>
         <!-- <section class="step" data-active-index="8">
           <div class="subtitle">🥇 Body Metric Distributions from our Data</div>
@@ -149,7 +151,7 @@
           trends in women’s participation, country representation, and comparisons with men’s performance
           , we see that progress in aquatic sports involves <span style="color: #3fd487;">more than individual physiology.</span> Together, 
           these patterns highlight the evolving landscape of women’s Olympic swimming and set the stage 
-          for exploring other factors that contribute to performance and achievement.
+          for exploring other factors that contribute to performance and achievement. <br /><br />
           <img src="assets/olympics_swimmers.png"/>
         </section>
 
