@@ -1,6 +1,6 @@
 (function () {
   var manager = {
-    margin: { top: 50, right: 10, bottom: 110, left: 45 },
+    margin: { top: 75, right: 10, bottom: 110, left: 45 },
     data: null
   };
 
@@ -51,6 +51,10 @@
 
     p.draw = function () {
       p.background(255);
+      p.fill(0);
+      p.textSize(20);
+      p.text("Hover over each dot to see athlete's details.", p.width / 3.5, 20);
+
 
       var plotWidth = (p.width - 60) / 3 - manager.margin.left - manager.margin.right;
       var plotHeight = p.height - manager.margin.top - manager.margin.bottom;
