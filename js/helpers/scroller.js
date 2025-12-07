@@ -64,7 +64,7 @@
     setTimeout(function () {
       self.resize();
       self.position();
-    }, 50);
+    }, 150);
   }
 
   Scroller.prototype.on = function (action, cb) {
