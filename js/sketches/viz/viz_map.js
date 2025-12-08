@@ -163,6 +163,20 @@ const worldMapSketch = (p) => {
     });
   }
 
+  function getLongevityColor(c) {
+    let maxYears = maxYearsParticipated;
+  
+    // normalized 0 to 1
+    let t = p.constrain(c / maxYears, 0, 1);
+  
+    // color ramp from dark gold to bright yellow
+    let r = p.lerp(120, 255, t);
+    let g = p.lerp(90, 255, t);
+    let b = p.lerp(10, 20, t);
+  
+    return p.color(r, g, b);
+  }
+
   // Draw each country
   function drawCountry(feature) {
     let geom = feature.geometry;
@@ -174,14 +188,10 @@ const worldMapSketch = (p) => {
   
     let maxYears = Math.max(...Object.values(countryCounts), 1);
     let intensity = p.map(count, 0, maxYears, 50, 255);
-    
-    // low longevity = darker gold  
-    // high longevity = bright yellow
-    let fillCol = count === 0
-      ? p.color(70)
-      : p.color(intensity, intensity * 0.8, 50);
-  
+
+    let fillCol = count === 0 ? p.color(70) : getLongevityColor(count);
     p.fill(fillCol);
+  
     p.stroke(40);
     p.strokeWeight(0.3);
   
@@ -213,38 +223,39 @@ const worldMapSketch = (p) => {
 
   function drawLegend() {
     let x = 20;
-    let y = p.height - 60;
+    let y = p.height - 80;
     let w = 200;
     let h = 15;
   
-    // Title
     p.fill(255);
     p.textSize(12);
     p.text("Longevity (Years Participated)", x, y - 10);
   
-    // Gradient bar
-    for (let i = 0; i < w; i++) {
-      let t = i / w;
+    let steps = maxYearsParticipated;  
+    let blockWidth = w / (steps + 1);
   
-      // map t to 0..maxYearsParticipated
-      let fakeCount = t * maxYearsParticipated;
+    // Draw each discrete block
+    for (let i = 0; i <= steps; i++) {
+      let col;
   
-      let r = p.map(fakeCount, 0, maxYearsParticipated, 100, 255);
-      let g = p.map(fakeCount, 0, maxYearsParticipated, 80, 255);
-      let b = p.map(fakeCount, 0, maxYearsParticipated, 5, 5); 
-      let col = p.color(r, g, b);
-
+      if (i === 0) {
+        col = p.color(70);
+      } else {
+        col = getLongevityColor(i);
+      }
+  
+      p.fill(col);
       p.stroke(col);
-      p.line(x + i, y, x + i, y + h);
+      let blockX = x + i * blockWidth;
+      p.rect(blockX, y, blockWidth, h);
     }
   
-    // Border
+    // Outline
     p.noFill();
     p.stroke(200);
     p.rect(x, y, w, h);
   
     // Labels
-    p.textSize(11);
     p.fill(230);
     p.noStroke();
     p.textAlign(p.LEFT, p.TOP);
@@ -253,7 +264,7 @@ const worldMapSketch = (p) => {
     p.textAlign(p.RIGHT, p.TOP);
     p.text(maxYearsParticipated, x + w, y + h + 3);
   }
-
-};
   
-  new p5(worldMapSketch, "viz_worldmap");
+};
+
+new p5(worldMapSketch, "viz_worldmap");
