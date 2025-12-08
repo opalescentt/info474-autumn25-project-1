@@ -53,7 +53,7 @@
         "Age",
         "Height",
         "Weight",
-        "Time",
+        "Time (s)",
       ];
 
       // select stroke
@@ -133,6 +133,7 @@
             p.fill("black");
             p.textSize(16);
             p.textAlign(p.CENTER, p.CENTER);
+            p.textStyle(i === 6 ? p.BOLD : p.NORMAL);
             p.text(selectedArr[j], x_cell + 45 + name_adjustment, y_cell + 25);
             p.pop();
             y_cell += 40;

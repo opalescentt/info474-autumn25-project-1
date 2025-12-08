@@ -20,14 +20,13 @@
       self.steps.forEach(function (el) {
         var rect = el.getBoundingClientRect();
         var top = rect.top + window.pageYOffset;
-        // Always use element top as the activation point
         self.sectionPositions.push(top);
       });
     };
 
     this.position = function () {
-      // Always trigger at viewport center
-      var triggerY = window.pageYOffset + window.innerHeight / 2;
+      var triggerY = window.pageYOffset + window.innerHeight * 0.2;
+
 
       var sectionIndex = 0;
       // Loop backwards to find the last section whose top is <= triggerY
@@ -65,7 +64,7 @@
     setTimeout(function () {
       self.resize();
       self.position();
-    }, 50);
+    }, 150);
   }
 
   Scroller.prototype.on = function (action, cb) {
