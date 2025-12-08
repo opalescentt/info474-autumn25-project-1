@@ -88,7 +88,7 @@
             }
 
             p.noFill();
-            p.stroke(0, 150, 255);
+            p.stroke("#FCB131");
             p.strokeWeight(3);
             p.beginShape();
             for (let i = 0; i < years.length; i++) {
@@ -110,7 +110,7 @@
                     hoveredIndex = i;
                 }
 
-                p.fill(0, 150, 255);
+                p.fill("#FCB131");
                 p.noStroke();
                 p.circle(x, y, 6);
             }
