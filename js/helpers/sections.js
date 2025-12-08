@@ -12,7 +12,7 @@
       // trigger: where on the viewport a step becomes "active".
       // 'center' => when the step reaches the vertical center of the viewport
       // 'top' => when the step reaches the top (small offset)
-      trigger: "center",
+      trigger: "top",
       visHiddenClass: "vis-hidden",
       visVisibleClass: "vis-visible",
     };
@@ -109,7 +109,8 @@
           sc.on("active", function (index) {
             // highlight steps (light coupling — just visual text opacity)
             document.querySelectorAll(".step").forEach(function (el, i) {
-              el.style.opacity = i === index ? "1" : "0.1";
+              el.style.opacity = "1";
+              el.style.transition = "opacity 0.3s ease";
             });
 
             // Determine if the active step defines a custom active-index
@@ -195,4 +196,5 @@
   } else {
     displayData();
   }
+  
 })();

@@ -30,7 +30,7 @@
     };
 
     p.setup = function () {
-      var canvas = p.createCanvas(1000, 550);
+      var canvas = p.createCanvas(770, 440);
       canvas.parent("viz_top10");
       p.textFont("Inria Serif");
     };
@@ -53,7 +53,7 @@
         "Age",
         "Height",
         "Weight",
-        "Time",
+        "Time (s)",
       ];
 
       // select stroke
@@ -94,7 +94,7 @@
       ];
 
       let x_cell = 0;
-      let x_width = 128;
+      let x_width = 90;
       let name_adjustment = 0;
 
       // first loop for columns
@@ -104,7 +104,7 @@
 
         if (i == 0) {
           x_width = 230;
-          name_adjustment = 50;
+          name_adjustment = 67;
         }
         // second loop - fills in cells vertically
         for (let j = -1; j < 11; j++) {
@@ -112,34 +112,35 @@
             p.push();
             p.fill("#252525");
             p.stroke("#EFEFEF");
-            p.rect(x_cell, y_cell, x_width, 50);
+            p.rect(x_cell, y_cell, x_width, 40);
             p.pop();
 
             p.push();
             p.fill("white");
-            p.textSize(20);
+            p.textSize(16);
             p.textAlign(p.CENTER, p.CENTER);
-            p.text(rowNames[i], x_cell + 65 + name_adjustment, 30);
+            p.text(rowNames[i], x_cell + 45 + name_adjustment, 22);
             p.pop();
-            y_cell += 50;
+            y_cell += 40;
           } else {
             p.push();
             p.fill("white");
             p.stroke("#EFEFEF");
-            p.rect(x_cell, y_cell, x_width, 50);
+            p.rect(x_cell, y_cell, x_width, 40);
             p.pop();
 
             p.push();
             p.fill("black");
-            p.textSize(20);
+            p.textSize(16);
             p.textAlign(p.CENTER, p.CENTER);
-            p.text(selectedArr[j], x_cell + 65 + name_adjustment, y_cell + 25);
+            p.textStyle(i === 6 ? p.BOLD : p.NORMAL);
+            p.text(selectedArr[j], x_cell + 45 + name_adjustment, y_cell + 25);
             p.pop();
-            y_cell += 50;
+            y_cell += 40;
           }
         }
         x_cell += x_width;
-        x_width = 128;
+        x_width = 90;
         name_adjustment = 0;
       }
 
