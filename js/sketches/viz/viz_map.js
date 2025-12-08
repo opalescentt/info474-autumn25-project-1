@@ -8,6 +8,8 @@ const worldMapSketch = (p) => {
   let slider;
   let currentYear;
   let cumulativeCounts = {};
+  let maxYearsParticipated = 1;
+
 
   const nocToIso = {
     "AUS": "AUS",
@@ -74,6 +76,8 @@ const worldMapSketch = (p) => {
     worldMap.features.forEach((feature) => drawCountry(feature));
 
     drawSliderLabels();   
+    drawLegend();
+
   };
 
   function drawSliderLabels() {
@@ -120,6 +124,9 @@ const worldMapSketch = (p) => {
     for (let iso in cumulativeCounts) {
       countryCounts[iso] = cumulativeCounts[iso].size;
     }
+
+    maxYearsParticipated = Math.max(...Object.values(countryCounts), 1);
+
   }
 
   function extractYears() {
@@ -202,6 +209,49 @@ const worldMapSketch = (p) => {
     let x = p.map(lon, -180, 180, 0, p.width);
     let y = p.map(lat, 90, -90, 0, p.height - 20) + 40; 
     return p.createVector(x, y);
+  }
+
+  function drawLegend() {
+    let x = 20;
+    let y = p.height - 60;
+    let w = 200;
+    let h = 15;
+  
+    // Title
+    p.fill(255);
+    p.textSize(12);
+    p.text("Longevity (Years Participated)", x, y - 10);
+  
+    // Gradient bar
+    for (let i = 0; i < w; i++) {
+      let t = i / w;
+  
+      // map t to 0..maxYearsParticipated
+      let fakeCount = t * maxYearsParticipated;
+  
+      let r = p.map(fakeCount, 0, maxYearsParticipated, 100, 255);
+      let g = p.map(fakeCount, 0, maxYearsParticipated, 80, 255);
+      let b = p.map(fakeCount, 0, maxYearsParticipated, 5, 5); 
+      let col = p.color(r, g, b);
+
+      p.stroke(col);
+      p.line(x + i, y, x + i, y + h);
+    }
+  
+    // Border
+    p.noFill();
+    p.stroke(200);
+    p.rect(x, y, w, h);
+  
+    // Labels
+    p.textSize(11);
+    p.fill(230);
+    p.noStroke();
+    p.textAlign(p.LEFT, p.TOP);
+    p.text("0", x, y + h + 3);
+  
+    p.textAlign(p.RIGHT, p.TOP);
+    p.text(maxYearsParticipated, x + w, y + h + 3);
   }
 
 };
