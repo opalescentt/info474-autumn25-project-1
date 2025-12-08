@@ -165,10 +165,14 @@ const worldMapSketch = (p) => {
   
     let count = countryCounts[iso] || 0;
   
-    // simple visible colors: grey if 0, gold if >0
+    let maxYears = Math.max(...Object.values(countryCounts), 1);
+    let intensity = p.map(count, 0, maxYears, 50, 255);
+    
+    // low longevity = darker gold  
+    // high longevity = bright yellow
     let fillCol = count === 0
-        ? p.color(70)
-        : p.color(255, 200, 50);
+      ? p.color(70)
+      : p.color(intensity, intensity * 0.8, 50);
   
     p.fill(fillCol);
     p.stroke(40);
