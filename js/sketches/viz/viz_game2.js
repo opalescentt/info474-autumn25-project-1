@@ -12,12 +12,12 @@
     },
     { 
       x: 'Height', y: 'Results', 
-      xLabel: 'Height (cm)', yLabel: '', 
+      xLabel: 'Height (cm)', yLabel: 'Results (sec)', 
       title: 'Height vs Results',
     },
     { 
       x: 'Weight', y: 'Results', 
-      xLabel: 'Weight (kg)', yLabel: '', 
+      xLabel: 'Weight (kg)', yLabel: 'Results (sec)', 
       title: 'Weight vs Results',
     }
   ];
