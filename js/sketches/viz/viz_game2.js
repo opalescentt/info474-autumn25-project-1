@@ -1,6 +1,6 @@
 (function () {
   var manager = {
-    margin: { top: 75, right: 10, bottom: 110, left: 45 },
+    margin: { top: 100, right: 3, bottom: 65, left: 45 },
     data: null
   };
 
@@ -12,12 +12,12 @@
     },
     { 
       x: 'Height', y: 'Results', 
-      xLabel: 'Height (cm)', yLabel: 'Results (sec)', 
+      xLabel: 'Height (cm)', yLabel: '', 
       title: 'Height vs Results',
     },
     { 
       x: 'Weight', y: 'Results', 
-      xLabel: 'Weight (kg)', yLabel: 'Results (sec)', 
+      xLabel: 'Weight (kg)', yLabel: '', 
       title: 'Weight vs Results',
     }
   ];
@@ -47,11 +47,19 @@
     };
 
     p.draw = function () {
-      p.background(255);
-      p.fill(0);
+      p.background(0, 127);
+      
+      // Draw static text first (before checking hover states)
+      p.fill(255, 204, 0);
       p.textSize(20);
-      p.text("Hover over each dot to see athlete's details.", p.width / 3.5, 20);
+      p.noStroke();
+      p.textAlign(p.LEFT, p.BASELINE);
+      p.text("Hover over each dot to see athlete's details.", 50, 40);
 
+      p.fill(255, 220);
+      p.textSize(12);
+      p.textAlign(p.LEFT, p.BASELINE);
+      p.text("Y-axis is scaled to the minimum and maximum race times, based on available women's 100m freestyle Olympic results from 1912–2020.", 55, 65);
 
       var plotWidth = (p.width - 60) / 3 - manager.margin.left - manager.margin.right;
       var plotHeight = p.height - manager.margin.top - manager.margin.bottom;
@@ -77,10 +85,11 @@
         p.translate(xOffset + manager.margin.left, manager.margin.top);
 
         // Title
-        p.fill(0);
-        p.textSize(14);
-        p.textAlign(p.CENTER, p.CENTER);
-        p.text(view.title, plotWidth / 2, -15);
+        // p.fill(0);
+        // p.textSize(14);
+        // p.fill(255, 220);
+        // p.textAlign(p.CENTER, p.CENTER);
+        // p.text(view.title, plotWidth / 2, -15);
 
         // Axes
         p.stroke(0);
@@ -89,7 +98,7 @@
         p.line(0, 0, 0, plotHeight);
 
         // Grid
-        p.stroke(200);
+        p.stroke(80);
         p.strokeWeight(1);
         for (let i = 0; i <= 5; i++) {
           var x = (i / 5) * plotWidth;
@@ -103,13 +112,18 @@
         p.noStroke();
         p.textSize(11);
         p.textAlign(p.CENTER, p.CENTER);
+        p.fill(255, 220);
         p.text(view.xLabel, plotWidth / 2, plotHeight + 25);
 
-        p.push();
-        p.translate(-40, plotHeight / 2);
-        p.rotate(-p.HALF_PI);
-        p.text(view.yLabel, 0, 0);
-        p.pop();
+        // Only show y-axis label on the first plot
+        if (plotIndex === 0) {
+          p.push();
+          p.translate(-40, plotHeight / 2);
+          p.rotate(-p.HALF_PI);
+          p.fill(255, 220);
+          p.text(view.yLabel, 0, 0);
+          p.pop();
+        }
 
         // Tick labels
         p.textSize(9);
@@ -120,10 +134,15 @@
           var y = (i / 5) * plotHeight;
 
           p.textAlign(p.CENTER, p.TOP);
+          p.fill(255, 220);
           p.text(xVal.toFixed(1), x, plotHeight + 5);
 
-          p.textAlign(p.RIGHT, p.CENTER);
-          p.text(yVal.toFixed(1), -5, plotHeight - y);
+          // Only show y-axis tick labels on the first (leftmost) plot
+          if (plotIndex === 0) {
+            p.textAlign(p.RIGHT, p.CENTER);
+            p.fill(255, 220);
+            p.text(yVal.toFixed(1), -5, plotHeight - y);
+          }
         }
 
         var mapX = function(val) { return p.map(val, xMin - xPadding, xMax + xPadding, 0, plotWidth); };
@@ -177,15 +196,6 @@
         p.text(hoveredPoint.view.xLabel + ': ' + hoveredPoint.data[hoveredPoint.view.x], tooltipX + 8, tooltipY - 24);
         p.text(hoveredPoint.view.yLabel + ': ' + hoveredPoint.data[hoveredPoint.view.y], tooltipX + 8, tooltipY - 6);
       }
-      p.fill(0);
-      p.noStroke();
-      p.textSize(12);
-      p.textAlign(p.CENTER, p.TOP);
-      p.text(
-        "Y-axis is scaled to the minimum and maximum race times, based on available women’s 100m freestyle Olympic results from 1912–2020.",
-        p.width / 2,
-        p.height - 40
-      );
     };
   });
 })();
