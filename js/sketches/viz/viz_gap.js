@@ -70,7 +70,7 @@
       for (i = 0; i < menYearArr.length; i++) {
         // year labels
         p.push();
-        p.fill("#C80428");
+        p.fill("white");
         p.textSize(20);
         p.text(menYearArr[i], 50, year_px);
         p.pop();
@@ -110,6 +110,16 @@
         p.ellipse(women_time_loc, year_px - 7, 10, 10);
         p.textSize(16);
         p.text(womenTimeArr[i], women_time_loc - 15, year_px + 14);
+        p.pop();
+
+        p.push();
+        p.fill("#C80428");
+        p.textSize(16);
+        p.text(
+          p.round(womenTimeArr[i] - menTimeArr[i], 2) + "s",
+          800,
+          year_px - 2
+        );
         p.pop();
 
         // set up for next loop
