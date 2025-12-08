@@ -229,7 +229,7 @@ const worldMapSketch = (p) => {
   
     p.fill(255);
     p.textSize(12);
-    p.text("Longevity (Years Participated)", x, y - 10);
+    p.text("Longevity (Years Participated)", x + 80, y - 20);
   
     let steps = maxYearsParticipated;  
     let blockWidth = w / (steps + 1);
