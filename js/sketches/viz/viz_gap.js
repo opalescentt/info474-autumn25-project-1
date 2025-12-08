@@ -38,24 +38,24 @@
       p.push();
       p.fill(255);
       p.stroke(255);
-      p.line(100, 350, 770, 350);
+      p.line(100, 50, 770, 50);
       p.line(100, 50, 100, 350);
 
       // text
       p.textSize(20);
-      p.text("Year", 45, 45);
-      p.text("Time (s)", 760, 380);
-      p.text("40", 90, 380);
+      p.text("Year", 60, 380);
+      p.text("Time (s)", 760, 40);
+      p.text("40", 90, 40);
 
       let x_axis_label = 40;
       // axis ticks
       for (i = 1; i < 45; i++) {
         if (i % 5 == 0) {
           x_axis_label += 5;
-          p.line(100 + i * pix_per_sec, 345, 100 + i * pix_per_sec, 355);
-          p.text(x_axis_label, 100 + i * pix_per_sec - 9, 380);
+          p.line(100 + i * pix_per_sec, 45, 100 + i * pix_per_sec, 55);
+          p.text(x_axis_label, 100 + i * pix_per_sec - 9, 38);
         } else {
-          p.line(100 + i * pix_per_sec, 348, 100 + i * pix_per_sec, 352);
+          p.line(100 + i * pix_per_sec, 48, 100 + i * pix_per_sec, 52);
         }
       }
 
