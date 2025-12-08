@@ -263,6 +263,11 @@ const worldMapSketch = (p) => {
   
     p.textAlign(p.RIGHT, p.TOP);
     p.text(maxYearsParticipated, x + w, y + h + 3);
+
+    // for (let i = 0; i <= steps; i++) {
+    //   let tickX = x + i * blockWidth + blockWidth * 0.5; // center under each block
+    //   p.text(i, tickX, y + h + 3);
+    // }
   }
   
 };
