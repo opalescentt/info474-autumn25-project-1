@@ -47,7 +47,7 @@
     };
 
     p.draw = function () {
-      p.background(0, 127);
+      p.background('#161616');
       
       // Draw static text first (before checking hover states)
       p.fill(255, 204, 0);
@@ -180,21 +180,37 @@
         var tooltipX = p.mouseX + 15;
         var tooltipY = p.mouseY - 20;
 
-        if (tooltipX + 150 > p.width) tooltipX = p.mouseX - 165;
-        if (tooltipY - 50 < 0) tooltipY = p.mouseY + 20;
+        let boxW = 170;
+  let boxH = 110;
 
-        p.fill(255, 255, 255, 240);
-        p.stroke(0);
-        p.strokeWeight(1);
-        p.rect(tooltipX, tooltipY - 50, 150, 60, 5);
+  if (tooltipX + boxW > p.width) tooltipX = p.mouseX - boxW - 15;
+  if (tooltipY - boxH < 0) tooltipY = p.mouseY + 20;
 
-        p.fill(0);
-        p.noStroke();
-        p.textSize(11);
-        p.textAlign(p.LEFT, p.TOP);
-        p.text(hoveredPoint.data.Athlete, tooltipX + 8, tooltipY - 42);
-        p.text(hoveredPoint.view.xLabel + ': ' + hoveredPoint.data[hoveredPoint.view.x], tooltipX + 8, tooltipY - 24);
-        p.text(hoveredPoint.view.yLabel + ': ' + hoveredPoint.data[hoveredPoint.view.y], tooltipX + 8, tooltipY - 6);
+  // Background box
+  p.fill(255, 255, 255, 240);
+  p.stroke(0);
+  p.strokeWeight(1);
+  p.rect(tooltipX, tooltipY - boxH, boxW, boxH, 5);
+
+  // Text details
+  let d = hoveredPoint.data;
+
+  p.fill(0);
+  p.noStroke();
+  p.textSize(11);
+  p.textAlign(p.LEFT, p.TOP);
+
+  const line1 = `Athlete: ${d.Athlete}`;
+  const line2 = `Age: ${d.Age}`;
+  const line3 = `Height: ${d.Height} cm`;
+  const line4 = `Weight: ${d.Weight} kg`;
+  const line5 = `Results: ${d.Results} sec`;
+
+  p.text(line1, tooltipX + 8, tooltipY - boxH + 8);
+  p.text(line2, tooltipX + 8, tooltipY - boxH + 26);
+  p.text(line3, tooltipX + 8, tooltipY - boxH + 44);
+  p.text(line4, tooltipX + 8, tooltipY - boxH + 62);
+  p.text(line5, tooltipX + 8, tooltipY - boxH + 80);
       }
     };
   });
