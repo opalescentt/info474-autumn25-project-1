@@ -47,7 +47,7 @@
     };
 
     p.draw = function () {
-      p.background('#161616');
+      p.background('#111111');
       
       // Draw static text first (before checking hover states)
       p.fill(255, 204, 0);
