@@ -1,11 +1,11 @@
-,Athlete,Year,Location,Team,Age,Height,Weight,Stroke,Distance,Results
-30,Lilly King,2016,Rio,USA,19,175.0,70.0,Breaststroke,100m,64.9
-31,Lydia Jacoby,2020,Tokyo,USA,16,N/A,N/A,Breaststroke,100m,64.9
-28,Leisel Jones,2008,Beijing,AUS,23,177.0,68.0,Breaststroke,100m,65.2
-44,Ruta Meilutyte,2012,London,LTU,15,176.0,75.0,Breaststroke,100m,65.5
-37,Megan Quann,2000,Sydney,USA,16,170.0,64.0,Breaststroke,100m,67.1
-40,Penelope Heyns,1996,Atlanta,RSA,22,174.0,63.0,Breaststroke,100m,67.7
-48,Tania Bogomilova,1988,Seoul,BUL,24,172.0,59.0,Breaststroke,100m,67.9
-11,Alena Rudkovskaya,1992,Barcelona,EUN,19,N/A,N/A,Breaststroke,100m,68.0
-41,Petra Van Staveren,1984,Angeles,NED,18,169.0,60.0,Breaststroke,100m,69.9
-51,Ute Geweniger,1980,Moscow,GDR,16,179.0,62.0,Breaststroke,100m,70.2
+,Athlete,Year,Location,Team,Country,Age,Height,Weight,Stroke,Distance,Results
+30,Lilly King,2016,Rio,USA,United States of America,19,175.0,70.0,Breaststroke,100m,64.9
+31,Lydia Jacoby,2020,Tokyo,USA,United States of America,16,N/A,N/A,Breaststroke,100m,64.9
+28,Leisel Jones,2008,Beijing,AUS,Australia,23,177.0,68.0,Breaststroke,100m,65.2
+44,Ruta Meilutyte,2012,London,LTU,Lithuania,15,176.0,75.0,Breaststroke,100m,65.5
+37,Megan Quann,2000,Sydney,USA,United States of America,16,170.0,64.0,Breaststroke,100m,67.1
+40,Penelope Heyns,1996,Atlanta,RSA,South Africa,22,174.0,63.0,Breaststroke,100m,67.7
+48,Tania Bogomilova,1988,Seoul,BUL,Bulgaria,24,172.0,59.0,Breaststroke,100m,67.9
+11,Alena Rudkovskaya,1992,Barcelona,EUN,Soviet Union,19,N/A,N/A,Breaststroke,100m,68.0
+41,Petra Van Staveren,1984,Angeles,NED,Netherlands,18,169.0,60.0,Breaststroke,100m,69.9
+51,Ute Geweniger,1980,Moscow,GDR,East Germany,16,179.0,62.0,Breaststroke,100m,70.2

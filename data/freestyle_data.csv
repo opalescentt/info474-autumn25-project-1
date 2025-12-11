@@ -1,11 +1,11 @@
-,Athlete,Year,Location,Team,Age,Height,Weight,Stroke,Distance,Results
-53,Emma Mckeon,2020,Tokyo,AUS,26,180.0,60.0,Freestyle,100m,51.96
-54,Penny Oleksiak,2016,Rio,CAN,16,185.0,68.0,Freestyle,100m,52.7
-55,Simone Manuel,2016,Rio,USA,20,178.0,73.0,Freestyle,100m,52.7
-56,Ranomi Kromowidjojo,2012,London,NED,21,180.0,72.0,Freestyle,100m,53.0
-57,Britta Steffen,2008,Beijing,GER,24,180.0,60.0,Freestyle,100m,53.12
-58,Inge De Bruijn,2000,Sydney,NED,27,174.0,55.0,Freestyle,100m,53.83
-59,Jodie Henry,2004,Athens,AUS,21,176.0,63.0,Freestyle,100m,53.84
-60,Jingyi Le,1996,Atlanta,CHN,21,178.0,68.0,Freestyle,100m,54.5
-61,Yong Zhuang,1992,Barcelona,CHN,20,172.0,68.0,Freestyle,100m,54.64
-62,Barbara Krause,1980,Moscow,GDR,21,180.0,68.0,Freestyle,100m,54.79
+,Athlete,Year,Location,Team,Country,Age,Height,Weight,Stroke,Distance,Results
+53,Emma Mckeon,2020,Tokyo,AUS,Australia,26,180.0,60.0,Freestyle,100m,51.96
+54,Penny Oleksiak,2016,Rio,CAN,Canada,16,185.0,68.0,Freestyle,100m,52.7
+55,Simone Manuel,2016,Rio,USA,United States of America,20,178.0,73.0,Freestyle,100m,52.7
+56,Ranomi Kromowidjojo,2012,London,NED,Netherlands,21,180.0,72.0,Freestyle,100m,53.0
+57,Britta Steffen,2008,Beijing,GER,Germany,24,180.0,60.0,Freestyle,100m,53.12
+58,Inge De Bruijn,2000,Sydney,NED,Netherlands,27,174.0,55.0,Freestyle,100m,53.83
+59,Jodie Henry,2004,Athens,AUS,Australia,21,176.0,63.0,Freestyle,100m,53.84
+60,Jingyi Le,1996,Atlanta,CHN,China,21,178.0,68.0,Freestyle,100m,54.5
+61,Yong Zhuang,1992,Barcelona,CHN,China,20,172.0,68.0,Freestyle,100m,54.64
+62,Barbara Krause,1980,Moscow,GDR,East Germany,21,180.0,68.0,Freestyle,100m,54.79
