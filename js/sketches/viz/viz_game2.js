@@ -59,7 +59,7 @@
       p.fill(255, 220);
       p.textSize(12);
       p.textAlign(p.LEFT, p.BASELINE);
-      p.text("Y-axis is scaled to the minimum and maximum race times, based on available women's 100m freestyle Olympic results from 1912–2020.", 55, 65);
+      p.text("Y-axis is scaled to the min and max women’s 100m freestyle Olympic race times (1912–2020).", 55, 65);
 
       var plotWidth = (p.width - 60) / 3 - manager.margin.left - manager.margin.right;
       var plotHeight = p.height - manager.margin.top - manager.margin.bottom;
