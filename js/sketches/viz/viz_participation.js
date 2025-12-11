@@ -10,9 +10,14 @@
     let years = [];
     let counts = [];
 
+    let menTable;
+    let menYears = [];
+    let menCounts = [];
+
     new p5(function (p) {
         p.preload = () => {
             table = p.loadTable("data/swimming_participation.csv", "csv", "header");
+            menTable = p.loadTable("data/men_swimming_participation.csv", "csv", "header");
         }
 
         p.setup = function()  {
@@ -23,18 +28,25 @@
                 years.push(table.getNum(r, "Year"));
                 counts.push(table.getNum(r, "Athlete"));
             }
+
+            for (let r = 0; r < menTable.getRowCount(); r++) {
+                menYears.push(menTable.getNum(r, "Year"));
+                menCounts.push(menTable.getNum(r, "Athlete"));
+            }
         }
 
         p.draw = function () {
             p.clear();
         
             let margin = 60;
-        
-            let minYear = Math.min(...years);
-            let maxYear = Math.max(...years);
-            let minCount = Math.min(...counts);
-            let maxCount = Math.max(...counts);
-        
+
+            let allYears = years.concat(menYears);
+            let allCounts = counts.concat(menCounts);
+            
+            let minYear = Math.min(...allYears);
+            let maxYear = Math.max(...allYears);
+            let minCount = Math.min(...allCounts);
+            let maxCount = Math.max(...allCounts);
             p.stroke(255);
             p.strokeWeight(2)
             p.line(margin, p.height - margin, p.width - margin, p.height - margin);  
@@ -50,7 +62,7 @@
             p.push();
             p.translate(17, p.height / 2);
             p.rotate(-p.HALF_PI);
-            p.text("Number of Women Athletes", 0, 0);
+            p.text("Number of Athletes", 0, 0);
             p.pop();
         
             // title
@@ -112,6 +124,31 @@
                 p.line(x1, p1, x2, p2);
             }
 
+            p.stroke("#4DA6FF");
+            p.strokeWeight(3);
+
+            for (let i = 0; i < menYears.length - 1; i++) {
+                let y1 = menYears[i];
+                let y2 = menYears[i + 1];
+
+                let isWarGap =
+                    (y1 === 1912 && y2 === 1916) ||
+                    (y1 === 1916 && y2 === 1920) ||
+                    (y1 === 1936 && y2 === 1940) ||
+                    (y1 === 1940 && y2 === 1944) ||
+                    (y1 === 1944 && y2 === 1948);
+
+                if (isWarGap) continue;
+
+                let x1 = p.map(menYears[i], minYear, maxYear, margin, p.width - margin);
+                let p1 = p.map(menCounts[i], minCount, maxCount, p.height - margin, margin);
+
+                let x2 = p.map(menYears[i + 1], minYear, maxYear, margin, p.width - margin);
+                let p2 = p.map(menCounts[i + 1], minCount, maxCount, p.height - margin, margin);
+
+                p.line(x1, p1, x2, p2);
+            }
+
 
             // Tooltip detection
             let hoveredIndex = -1;
@@ -126,6 +163,15 @@
                 }
 
                 p.fill("#FCB131");
+                p.noStroke();
+                p.circle(x, y, 6);
+            }
+
+            for (let i = 0; i < menYears.length; i++) {
+                let x = p.map(menYears[i], minYear, maxYear, margin, p.width - margin);
+                let y = p.map(menCounts[i], minCount, maxCount, p.height - margin, margin);
+            
+                p.fill("#4DA6FF");
                 p.noStroke();
                 p.circle(x, y, 6);
             }
@@ -176,6 +222,16 @@
                     p.text("Athletes: " + count, x + 18, y - 15);
                 }
             }
+
+            // p.fill("#FCB131");
+            // p.circle(120, 60, 10);
+            // p.fill(255);
+            // p.text("Women", 140, 63);
+
+            // p.fill("#4DA6FF");
+            // p.circle(200, 60, 10);
+            // p.fill(255);
+            // p.text("Men", 220, 63);
         };
     });
 
