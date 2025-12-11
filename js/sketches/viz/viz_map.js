@@ -67,7 +67,7 @@ const worldMapSketch = (p) => {
   };
 
   p.draw = () => {
-    p.background(25);
+    p.clear();
 
     p.textAlign(p.LEFT, p.BASELINE);
 
