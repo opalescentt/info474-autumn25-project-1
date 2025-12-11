@@ -175,9 +175,9 @@ const worldMapSketch = (p) => {
     let t = p.constrain(c / maxYears, 0, 1);
   
     // color ramp from dark gold to bright yellow
-    let r = p.lerp(120, 255, t);
-    let g = p.lerp(90, 255, t);
-    let b = p.lerp(10, 20, t);
+    let r = p.lerp(82, 252, t);
+    let g = p.lerp(50, 177, t);
+    let b = p.lerp(8, 49, t);
   
     return p.color(r, g, b);
   }
