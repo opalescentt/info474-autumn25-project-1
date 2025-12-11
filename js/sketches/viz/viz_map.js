@@ -11,7 +11,17 @@ const worldMapSketch = (p) => {
   let maxYearsParticipated = 1;
   let selectedCountry = null;
 
+  // custom slider inside canvas
+  let sliderX;
+  let sliderY; 
+  let sliderW;
+  let sliderH = 10;
+  let dragging = false;
+  let sliderValue = 0;
 
+  // map vertical region
+  const mapTop = 0;
+  const mapBottom = 380;
 
   const nocToIso = {
     "AUS": "AUS",
@@ -53,14 +63,21 @@ const worldMapSketch = (p) => {
   };
 
   p.setup = () => {
-    p.createCanvas(850, 450); 
+    p.createCanvas(800, 475); 
+    p.textFont("Inria Serif");
+
+
+    sliderW = p.width - 30;
+    sliderX = 13;
+    sliderY = 440;
 
     extractYears();
-    createYearSlider();
-
     currentYear = years[0];
     updateYearCounts(currentYear);
-    p.mousePressed = handleClick;
+    
+    p.mousePressed = handleMousePressed;
+    p.mouseReleased = handleMouseReleased;
+    p.mouseDragged = handleMouseDragged;
 
     p.noLoop();
     
@@ -82,30 +99,81 @@ const worldMapSketch = (p) => {
     drawSliderLabels();   
     drawLegend();
     drawTooltip();
-
+    drawCustomSlider();
   };
+
+  function drawCustomSlider() {
+    // track background
+    p.noStroke();
+    p.fill(180);
+    p.rect(sliderX, sliderY, sliderW, sliderH, 5);
+  
+    // filled portion
+    let filledW = p.map(sliderValue, 0, years.length - 1, 0, sliderW);
+    p.fill("#FCB131");
+    p.rect(sliderX, sliderY, filledW, sliderH, 5);
+  
+    // thumb
+    let thumbX = sliderX + filledW;
+    let thumbY = sliderY + sliderH / 2;
+  
+    p.fill(255);
+    p.stroke("#FCB131");
+    p.strokeWeight(2);
+    p.circle(thumbX, thumbY, 16);
+  }
+
+  function handleMousePressed() {
+    // first check slider thumb
+    let filledW = p.map(sliderValue, 0, years.length - 1, 0, sliderW);
+    let thumbX = sliderX + filledW;
+    let thumbY = sliderY + sliderH / 2;
+    
+    if (p.dist(p.mouseX, p.mouseY, thumbX, thumbY) < 12) {
+      dragging = true;
+      return;
+    }
+    
+    // otherwise, treat as map click for tooltip selection
+    handleCountryClick();
+  }
+
+  function handleMouseReleased() {
+    dragging = false;
+  }
+    
+  function handleMouseDragged() {
+    if (dragging) {
+    let pos = p.constrain(p.mouseX, sliderX, sliderX + sliderW);
+    sliderValue = Math.round(
+    p.map(pos, sliderX, sliderX + sliderW, 0, years.length - 1)
+    );
+  
+    currentYear = years[sliderValue];
+    updateYearCounts(currentYear);
+    p.redraw();
+    }
+    
+  }
 
   function drawSliderLabels() {
     if (years.length === 0) return;
   
-    p.textSize(12);
-    p.fill(200);
-    p.textAlign(p.CENTER, p.TOP);
+    p.textSize(11);
+    p.fill(220);
+    p.textAlign(p.CENTER, p.BOTTOM);
   
-    // choose a horizontal range that roughly matches the slider
-    let startX = 20;
-    let endX = p.width - 20;
-    let labelY = p.height - 10;  // near bottom of canvas
+    let startX = sliderX;
+    let endX = sliderX + sliderW;
+    let labelY = sliderY - 15;
   
-    // label the first and last year and maybe a few in between
     for (let i = 0; i < years.length; i++) {
-      // only show some labels so it does not get too crowded
       if (i === 0 || i === years.length - 1 || i % 6 === 0) {
         let x = p.map(i, 0, years.length - 1, startX, endX);
         p.text(years[i], x, labelY);
       }
     }
-  }
+  }  
 
   // Recalculate country counts based on selected year
   function updateYearCounts(selectedYear) {
@@ -148,24 +216,6 @@ const worldMapSketch = (p) => {
     years = Array.from(yearSet).sort((a, b) => a - b);
   
     years.sort((a, b) => a - b);
-  }
-
-  // Create slider
-  function createYearSlider() {
-    slider = p.createSlider(0, years.length - 1, 0, 1);
-  
-    slider.parent("viz_worldmap");
-  
-    slider.style("position", "relative");
-    slider.style("margin-top", "10px");
-    slider.style("width", p.width + "px");  
-  
-    slider.input(() => {
-      let index = slider.value();
-      currentYear = years[index];
-      updateYearCounts(currentYear);
-      p.redraw();
-    });
   }
 
   function getLongevityColor(c) {
@@ -282,7 +332,7 @@ const worldMapSketch = (p) => {
   // Geo projection
   function project(lon, lat) {
     let x = p.map(lon, -180, 180, 0, p.width);
-    let y = p.map(lat, 90, -90, 0, p.height - 20) + 40; 
+    let y = p.map(lat, 90, -90, mapTop, mapBottom) + 40; 
     return p.createVector(x, y);
   }
 
@@ -326,7 +376,7 @@ const worldMapSketch = (p) => {
 
   function drawLegend() {
     let x = 20;
-    let y = p.height - 80;
+    let y = 350; 
     let w = 200;
     let h = 15;
   
