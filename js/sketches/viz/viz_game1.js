@@ -91,7 +91,7 @@
 
     p.draw = function () {
       p.clear();
-      p.background(0, 127);
+      p.background('#111111');
       p.fill(255, 204, 0);
       p.textSize(20);
       p.text("Drag sliders to guess the Olympic medalist profile", 280, 40);
