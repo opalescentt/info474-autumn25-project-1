@@ -1,11 +1,11 @@
-,Athlete,Year,Location,Team,Age,Height,Weight,Stroke,Distance,Results
-34,Margaret Mac Neil,2020,Tokyo,CAN,20,N/A,N/A,Butterfly,100m,55.59
-6,Dana Vollmer,2012,London,USA,25,185.0,68.0,Butterfly,100m,55.98
-15,Inge De Bruijn,2000,Sydney,NED,27,174.0,55.0,Butterfly,100m,56.61
-29,Libby Trickett,2008,Beijing,AUS,23,167.0,60.0,Butterfly,100m,56.73
-42,Petria Thomas,2004,Athens,AUS,29,173.0,64.0,Butterfly,100m,57.72
-14,Hitomi Kashima,1996,Atlanta,JPN,16,162.0,52.0,Butterfly,100m,60.1
-24,Kornelia Ender,1976,Montreal,GDR,18,172.0,59.0,Butterfly,100m,60.1
-17,Jenna Leigh Johnson,1984,Angeles,USA,16,180.0,63.0,Butterfly,100m,60.2
-1,Caren Metschuck,1980,Moscow,GDR,17,184.0,76.0,Butterfly,100m,60.4
-16,Janel Simone Jorgensen,1988,Seoul,USA,17,178.0,66.0,Butterfly,100m,60.5
+,Athlete,Year,Location,Team,Country,Age,Height,Weight,Stroke,Distance,Results
+34,Margaret Mac Neil,2020,Tokyo,CAN,Canada,20,N/A,N/A,Butterfly,100m,55.59
+6,Dana Vollmer,2012,London,USA,United States of America,25,185.0,68.0,Butterfly,100m,55.98
+15,Inge De Bruijn,2000,Sydney,NED,Netherlands,27,174.0,55.0,Butterfly,100m,56.61
+29,Libby Trickett,2008,Beijing,AUS,Australia,23,167.0,60.0,Butterfly,100m,56.73
+42,Petria Thomas,2004,Athens,AUS,Australia,29,173.0,64.0,Butterfly,100m,57.72
+14,Hitomi Kashima,1996,Atlanta,JPN,Japan,16,162.0,52.0,Butterfly,100m,60.1
+24,Kornelia Ender,1976,Montreal,GDR,East Germany,18,172.0,59.0,Butterfly,100m,60.1
+17,Jenna Leigh Johnson,1984,Angeles,USA,United States of America,16,180.0,63.0,Butterfly,100m,60.2
+1,Caren Metschuck,1980,Moscow,GDR,East Germany,17,184.0,76.0,Butterfly,100m,60.4
+16,Janel Simone Jorgensen,1988,Seoul,USA,United States of America,17,178.0,66.0,Butterfly,100m,60.5
