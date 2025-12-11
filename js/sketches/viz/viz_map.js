@@ -84,7 +84,7 @@ const worldMapSketch = (p) => {
   };
 
   p.draw = () => {
-    p.clear();
+    p.background("#111111");
 
     p.textAlign(p.LEFT, p.BASELINE);
 
@@ -99,7 +99,20 @@ const worldMapSketch = (p) => {
     drawSliderLabels();   
     drawLegend();
     drawTooltip();
+    p.push();
+    p.drawingContext.save();
+
+    // define clipping region (only bottom area can be drawn)
+    p.drawingContext.beginPath();
+    p.drawingContext.rect(0, sliderY - 5, p.width, p.height - (sliderY - 5));
+    p.drawingContext.clip();
+
+    // now draw slider inside clipped region
     drawCustomSlider();
+
+    p.drawingContext.restore();
+    p.pop();
+
   };
 
   function drawCustomSlider() {
