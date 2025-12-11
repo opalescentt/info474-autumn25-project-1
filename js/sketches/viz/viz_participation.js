@@ -257,15 +257,15 @@
                 }
             }
 
-            // p.fill("#FCB131");
-            // p.circle(120, 60, 10);
-            // p.fill(255);
-            // p.text("Women", 140, 63);
+            p.fill("#FCB131");
+            p.circle(120, 60, 10);
+            p.fill(255);
+            p.text("Women", 150, 63);
 
-            // p.fill("#4DA6FF");
-            // p.circle(200, 60, 10);
-            // p.fill(255);
-            // p.text("Men", 220, 63);
+            p.fill("#4DA6FF");
+            p.circle(220, 60, 10);
+            p.fill(255);
+            p.text("Men", 240, 63);
         };
     });
 
