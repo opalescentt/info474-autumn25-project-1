@@ -194,7 +194,7 @@ const worldMapSketch = (p) => {
     let isSelected = selectedCountry === iso;
 
     if (isSelected) {
-      fillCol = p.color(255, 255, 120); // highlight color
+      fillCol = p.color(255, 200, 80); // highlight color
     }
 
     p.fill(fillCol);
