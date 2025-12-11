@@ -256,15 +256,23 @@
                 }
             }
 
-            p.fill("#FCB131");
-            p.circle(120, 60, 10);
-            p.fill(255);
-            p.text("Women", 150, 63);
+            p.push();   // start isolated drawing state
 
+            p.fill("#FCB131");
+            p.noStroke();
+            p.circle(120, 60, 10);
+            
+            p.fill(255);
+            p.textAlign(p.LEFT, p.CENTER);
+            p.text("Women", 140, 60);
+            
             p.fill("#0281C8");
             p.circle(220, 60, 10);
+            
             p.fill(255);
-            p.text("Men", 240, 63);
+            p.text("Men", 240, 60);
+            
+            p.pop(); 
         };
     });
 
