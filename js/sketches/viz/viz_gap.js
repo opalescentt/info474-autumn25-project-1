@@ -9,6 +9,7 @@
 
   let men_data, women_data, menYearArr, menTimeArr, womenYearArr, womenTimeArr;
   let pix_per_sec = 15;
+  let segments = [];
 
   new p5(function (p) {
     p.preload = function () {
@@ -18,9 +19,13 @@
 
     p.setup = function () {
       menYearArr = men_data.getColumn("Year");
-      menTimeArr = men_data.getColumn("Results");
+      menTimeArr = men_data.getColumn("Results").map(function (val) {
+        return Number(val);
+      });
       womenYearArr = women_data.getColumn("Year");
-      womenTimeArr = women_data.getColumn("Results");
+      womenTimeArr = women_data.getColumn("Results").map(function (val) {
+        return Number(val);
+      });
 
       var canvas = p.createCanvas(850, 400);
       canvas.parent("viz_gap");
@@ -31,14 +36,16 @@
       // background
       p.push();
       p.clear();
-      p.background(0);
+      p.background("#161616");
       p.pop();
+
+      segments = [];
 
       // axes
       p.push();
       p.fill(255);
       p.stroke(255);
-      p.line(100, 50, 770, 50);
+      p.line(100, 50, 760, 50);
       p.line(100, 50, 100, 350);
 
       // text
@@ -49,7 +56,7 @@
 
       let x_axis_label = 40;
       // axis ticks
-      for (i = 1; i < 45; i++) {
+      for (let i = 1; i < 45; i++) {
         if (i % 5 == 0) {
           x_axis_label += 5;
           p.line(100 + i * pix_per_sec, 45, 100 + i * pix_per_sec, 55);
@@ -62,12 +69,13 @@
       p.pop();
 
       plotData();
+      drawTooltip();
     };
 
     function plotData() {
-      year_px = 100;
-      time_px_baseline = 100;
-      for (i = 0; i < menYearArr.length; i++) {
+      let year_px = 100;
+      const time_px_baseline = 100;
+      for (let i = 0; i < menYearArr.length; i++) {
         // year labels
         p.push();
         p.fill("white");
@@ -82,7 +90,7 @@
         let women_time_loc =
           time_px_baseline + pix_per_sec * (womenTimeArr[i] - 40);
 
-        if (i == 0) {
+        if (i === 0) {
           p.push();
           p.fill(255);
           p.textSize(16);
@@ -102,29 +110,106 @@
         p.fill("#0281C8");
         p.ellipse(men_time_loc, year_px - 7, 10, 10);
         p.textSize(16);
-        p.text(menTimeArr[i], men_time_loc - 15, year_px + 14);
+        p.text(menTimeArr[i].toFixed(2) + "s", men_time_loc - 20, year_px + 14);
         p.pop();
 
         p.push();
         p.fill("#FCB131");
         p.ellipse(women_time_loc, year_px - 7, 10, 10);
         p.textSize(16);
-        p.text(womenTimeArr[i], women_time_loc - 15, year_px + 14);
-        p.pop();
-
-        p.push();
-        p.fill("#C80428");
-        p.textSize(16);
         p.text(
-          p.round(womenTimeArr[i] - menTimeArr[i], 2) + "s",
-          800,
-          year_px - 2
+          womenTimeArr[i].toFixed(2) + "s",
+          women_time_loc - 20,
+          year_px + 14
         );
         p.pop();
+
+        segments.push({
+          year: menYearArr[i],
+          menTime: menTimeArr[i],
+          womenTime: womenTimeArr[i],
+          gap: womenTimeArr[i] - menTimeArr[i],
+          y: year_px - 7,
+          menX: men_time_loc,
+          womenX: women_time_loc,
+          x1: Math.min(men_time_loc, women_time_loc),
+          x2: Math.max(men_time_loc, women_time_loc),
+        });
 
         // set up for next loop
         year_px += 40;
       }
+    }
+    function drawTooltip() {
+      if (!segments.length) return;
+      const mx = p.mouseX;
+      const my = p.mouseY;
+      let hoverSegment = null;
+
+      for (let i = 0; i < segments.length; i++) {
+        const seg = segments[i];
+        const withinX = mx >= seg.x1 - 8 && mx <= seg.x2 + 8;
+        const withinY = Math.abs(my - seg.y) <= 12;
+        if (withinX && withinY) {
+          hoverSegment = seg;
+          break;
+        }
+      }
+
+      if (!hoverSegment) return;
+
+      p.push();
+      p.stroke("#C80428");
+      p.strokeWeight(4);
+      p.line(hoverSegment.x1, hoverSegment.y, hoverSegment.x2, hoverSegment.y);
+
+      p.noStroke();
+      p.fill("#0281C8");
+      p.circle(hoverSegment.menX, hoverSegment.y, 14);
+      p.fill("#FCB131");
+      p.circle(hoverSegment.womenX, hoverSegment.y, 14);
+      p.pop();
+
+      const tooltipLines = [
+        `${hoverSegment.year} Games`,
+        `Gap: ${hoverSegment.gap.toFixed(2)}s`,
+      ];
+
+      p.push();
+      p.textSize(12);
+      p.textAlign(p.LEFT, p.TOP);
+      let boxWidth = 0;
+      tooltipLines.forEach(function (line) {
+        boxWidth = Math.max(boxWidth, p.textWidth(line));
+      });
+      const padding = 8;
+      const lineHeight = 16;
+      const boxHeight = lineHeight * tooltipLines.length + padding * 2;
+      let boxX = mx + 16;
+      let boxY = my - boxHeight - 16;
+
+      if (boxX + boxWidth + padding * 2 > p.width) {
+        boxX = p.width - boxWidth - padding * 2 - 10;
+      }
+      if (boxY < 10) {
+        boxY = my + 16;
+      }
+
+      p.fill(255, 255, 255, 240);
+      p.stroke(0);
+      p.strokeWeight(1);
+      p.rect(boxX, boxY, boxWidth + padding * 2, boxHeight, 5);
+
+      p.fill(0);
+      p.noStroke();
+      for (let i = 0; i < tooltipLines.length; i++) {
+        p.text(
+          tooltipLines[i],
+          boxX + padding,
+          boxY + padding + i * lineHeight
+        );
+      }
+      p.pop();
     }
     // 1912, 1932, 1952, 1972, 1992, 2012
     // 1916, 1944 olympics canclled bc of ww1
