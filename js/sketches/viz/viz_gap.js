@@ -33,7 +33,7 @@
     };
 
     p.draw = function () {
-      // background
+      // background color
       p.push();
       p.clear();
       p.background("#111111");
