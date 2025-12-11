@@ -73,10 +73,10 @@
             p.text("Number of Athletes", 0, 0);
             p.pop();
         
-            // title
+            //title
             p.textSize(20);
             p.textAlign(p.CENTER);
-            p.text("Women's Participation in Olympic Swimming (1912–2016)", p.width / 2, 30);
+            p.text("Olympic Swimming Participation by Gender, 1912–2016", p.width / 2, 30);
 
             p.textSize(12);
             p.fill(255);
