@@ -269,7 +269,7 @@ const worldMapSketch = (p) => {
     }
   }
 
-  function handleClick() {
+  function handleCountryClick() {
     let mx = p.mouseX;
     let my = p.mouseY;
   
