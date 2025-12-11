@@ -131,7 +131,7 @@
                 p.line(x1, p1, x2, p2);
             }
 
-            p.stroke("#4DA6FF");
+            p.stroke("#0281C8");
             p.strokeWeight(3);
 
             for (let i = 0; i < menYears.length - 1; i++) {
@@ -189,7 +189,7 @@
                     hoveredSource = "men";
                 }
             
-                p.fill("#4DA6FF");
+                p.fill("#0281C8");
                 p.noStroke();
                 p.circle(x, y, 6);
             }
@@ -197,11 +197,10 @@
             // Tooltip
             if (hoveredYear !== null) {
                 let womenIndex = years.indexOf(hoveredYear);
-                let menValue = menLookup[hoveredYear];   // undefined if men don't have this year
-            
+                let menValue = menLookup[hoveredYear];  
+                
                 let x = p.map(hoveredYear, minYear, maxYear, margin, p.width - margin);
             
-                // Pick women y-position if available, otherwise men
                 let y;
 
                 if (hoveredSource === "women") {
@@ -262,7 +261,7 @@
             p.fill(255);
             p.text("Women", 150, 63);
 
-            p.fill("#4DA6FF");
+            p.fill("#0281C8");
             p.circle(220, 60, 10);
             p.fill(255);
             p.text("Men", 240, 63);
