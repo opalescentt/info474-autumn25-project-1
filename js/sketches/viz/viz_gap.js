@@ -36,7 +36,7 @@
       // background
       p.push();
       p.clear();
-      p.background("#161616");
+      p.background("#111111");
       p.pop();
 
       segments = [];
