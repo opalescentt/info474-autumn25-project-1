@@ -130,7 +130,7 @@ const worldMapSketch = (p) => {
       countryCounts[iso] = cumulativeCounts[iso].size;
     }
 
-    maxYearsParticipated = Math.max(...Object.values(countryCounts), 1);
+    maxYearsParticipated = 22;
 
   }
 
@@ -169,15 +169,12 @@ const worldMapSketch = (p) => {
   }
 
   function getLongevityColor(c) {
-    let maxYears = maxYearsParticipated;
-  
-    // normalized 0 to 1
-    let t = p.constrain(c / maxYears, 0, 1);
-  
-    // color ramp from dark gold to bright yellow
-    let r = p.lerp(120, 255, t);
-    let g = p.lerp(90, 255, t);
-    let b = p.lerp(10, 20, t);
+    let t = p.constrain(c / 22, 0, 1);
+
+    // dark gold for low values → #FCB131 for high values
+    let r = p.lerp(90, 252, t);   // 90 → 252
+    let g = p.lerp(58, 177, t);   // 58 → 177
+    let b = p.lerp(11, 49, t);    // 11 → 49
   
     return p.color(r, g, b);
   }
@@ -194,7 +191,7 @@ const worldMapSketch = (p) => {
     let isSelected = selectedCountry === iso;
 
     if (isSelected) {
-      fillCol = p.color(255, 255, 120); // highlight color
+      fillCol = p.color(255, 200, 80); // highlight color
     }
 
     p.fill(fillCol);
