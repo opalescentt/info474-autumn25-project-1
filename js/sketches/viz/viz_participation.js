@@ -24,6 +24,7 @@
 
         p.setup = function()  {
             const canvas = p.createCanvas(850, 400);
+            p.textFont("Inria Serif");
             canvas.parent("viz_participation");
 
             for (let r = 0; r < table.getRowCount(); r++) {
