@@ -90,13 +90,29 @@
             p.noFill();
             p.stroke("#FCB131");
             p.strokeWeight(3);
-            p.beginShape();
-            for (let i = 0; i < years.length; i++) {
-                let x = p.map(years[i], minYear, maxYear, margin, p.width - margin);
-                let y = p.map(counts[i], minCount, maxCount,p.height - margin, margin);
-                p.vertex(x, y);
+
+            for (let i = 0; i < years.length - 1; i++) {
+                let y1 = years[i];
+                let y2 = years[i + 1];
+
+                let isWarGap =
+                    (y1 === 1912 && y2 === 1916) ||
+                    (y1 === 1916 && y2 === 1920) ||
+                    (y1 === 1936 && y2 === 1940) ||
+                    (y1 === 1940 && y2 === 1944) ||
+                    (y1 === 1944 && y2 === 1948);
+
+                if (isWarGap) continue;
+
+                let x1 = p.map(y1, minYear, maxYear, margin, p.width - margin);
+                let p1 = p.map(counts[i], minCount, maxCount, p.height - margin, margin);
+
+                let x2 = p.map(y2, minYear, maxYear, margin, p.width - margin);
+                let p2 = p.map(counts[i + 1], minCount, maxCount, p.height - margin, margin);
+
+                p.line(x1, p1, x2, p2);
             }
-            p.endShape();
+
 
             // Tooltip detection
             let hoveredIndex = -1;
